@@ -49,7 +49,7 @@ namespace _421final.Views
         // GET: MyTeams/Create
         public IActionResult Create()
         {
-            ViewData["TeamStyleId"] = new SelectList(_context.TeamStyle, "Id", "Id");
+            ViewData["TeamStyleId"] = new SelectList(_context.TeamStyle, "Id", "style");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace _421final.Views
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TeamStyleId"] = new SelectList(_context.TeamStyle, "Id", "Id", myTeam.TeamStyleId);
+            ViewData["TeamStyleId"] = new SelectList(_context.TeamStyle, "Id", "style", myTeam.TeamStyleId);
             return View(myTeam);
         }
 
@@ -83,7 +83,7 @@ namespace _421final.Views
             {
                 return NotFound();
             }
-            ViewData["TeamStyleId"] = new SelectList(_context.TeamStyle, "Id", "Id", myTeam.TeamStyleId);
+            ViewData["TeamStyleId"] = new SelectList(_context.TeamStyle, "Id", "style", myTeam.TeamStyleId);
             return View(myTeam);
         }
 
@@ -119,7 +119,7 @@ namespace _421final.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TeamStyleId"] = new SelectList(_context.TeamStyle, "Id", "Id", myTeam.TeamStyleId);
+            ViewData["TeamStyleId"] = new SelectList(_context.TeamStyle, "Id", "style", myTeam.TeamStyleId);
             return View(myTeam);
         }
 
