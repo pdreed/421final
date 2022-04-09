@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _421final.Data;
 
@@ -11,9 +12,10 @@ using _421final.Data;
 namespace _421final.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220409213355_addedMyTeamandTeamStyle")]
+    partial class addedMyTeamandTeamStyle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,43 +23,6 @@ namespace _421final.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("_421final.Models.MyTeam", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("C")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PF")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PG")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SF")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SG")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TeamStyleId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("teamName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamStyleId");
-
-                    b.ToTable("MyTeam");
-                });
 
             modelBuilder.Entity("_421final.Models.Player", b =>
                 {
@@ -147,22 +112,6 @@ namespace _421final.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Team");
-                });
-
-            modelBuilder.Entity("_421final.Models.TeamStyle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("style")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TeamStyle");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -365,17 +314,6 @@ namespace _421final.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("_421final.Models.MyTeam", b =>
-                {
-                    b.HasOne("_421final.Models.TeamStyle", "TeamStyle")
-                        .WithMany()
-                        .HasForeignKey("TeamStyleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TeamStyle");
                 });
 
             modelBuilder.Entity("_421final.Models.Player", b =>
