@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _421final.Data;
 
@@ -11,9 +12,10 @@ using _421final.Data;
 namespace _421final.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220409201812_addedMyTeam")]
+    partial class addedMyTeam
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,31 +32,32 @@ namespace _421final.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("C")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PF")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PG")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SF")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SG")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TeamStyleId")
-                        .IsRequired()
+                    b.Property<int?>("CId")
                         .HasColumnType("int");
 
-                    b.Property<string>("teamName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("PFId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PGId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SFId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SGId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeamStyleId");
+                    b.HasIndex("CId");
+
+                    b.HasIndex("PFId");
+
+                    b.HasIndex("PGId");
+
+                    b.HasIndex("SFId");
+
+                    b.HasIndex("SGId");
 
                     b.ToTable("MyTeam");
                 });
@@ -147,22 +150,6 @@ namespace _421final.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Team");
-                });
-
-            modelBuilder.Entity("_421final.Models.TeamStyle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("style")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TeamStyle");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -369,13 +356,35 @@ namespace _421final.Data.Migrations
 
             modelBuilder.Entity("_421final.Models.MyTeam", b =>
                 {
-                    b.HasOne("_421final.Models.TeamStyle", "TeamStyle")
+                    b.HasOne("_421final.Models.Player", "C")
                         .WithMany()
-                        .HasForeignKey("TeamStyleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CId");
 
-                    b.Navigation("TeamStyle");
+                    b.HasOne("_421final.Models.Player", "PF")
+                        .WithMany()
+                        .HasForeignKey("PFId");
+
+                    b.HasOne("_421final.Models.Player", "PG")
+                        .WithMany()
+                        .HasForeignKey("PGId");
+
+                    b.HasOne("_421final.Models.Player", "SF")
+                        .WithMany()
+                        .HasForeignKey("SFId");
+
+                    b.HasOne("_421final.Models.Player", "SG")
+                        .WithMany()
+                        .HasForeignKey("SGId");
+
+                    b.Navigation("C");
+
+                    b.Navigation("PF");
+
+                    b.Navigation("PG");
+
+                    b.Navigation("SF");
+
+                    b.Navigation("SG");
                 });
 
             modelBuilder.Entity("_421final.Models.Player", b =>
