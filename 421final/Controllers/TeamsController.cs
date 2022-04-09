@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _421final.Data;
 using _421final.Models;
+using _421final.Data.Migrations;
 
 namespace _421final.Views
 {
@@ -59,7 +60,7 @@ namespace _421final.Views
         {
             if (ModelState.IsValid)
             {
-                if (TeamLogo != null && TeamLogo.Length >0)
+                if (TeamLogo != null && TeamLogo.Length > 0)
                 {
                     var memoryStream = new MemoryStream();
                     await TeamLogo.CopyToAsync(memoryStream);
@@ -93,7 +94,7 @@ namespace _421final.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,city,state,name,conference,division,championshipsWon")] Team team)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,city,state,name,conference,division,championshipsWon")] Team team, IFormFile TeamLogo)
         {
             if (id != team.Id)
             {
@@ -104,6 +105,20 @@ namespace _421final.Views
             {
                 try
                 {
+                    if (TeamLogo != null && TeamLogo.Length > 0)
+                    {
+                        var memoryStream = new MemoryStream();
+                        await TeamLogo.CopyToAsync(memoryStream);
+                        team.TeamLogo = memoryStream.ToArray();
+                    }
+                    else //grab EXISTING photo from DB in case user didn't select a new one
+                    {
+                        Team existingProduct = _context.Team.AsNoTracking().FirstOrDefault(m => m.Id == id);
+                        if (existingProduct != null)
+                        {
+                            team.TeamLogo = existingProduct.TeamLogo;
+                        }
+                    }
                     _context.Update(team);
                     await _context.SaveChangesAsync();
                 }
