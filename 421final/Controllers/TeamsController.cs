@@ -55,10 +55,16 @@ namespace _421final.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,city,state,name,conference,division,championshipsWon")] Team team)
+        public async Task<IActionResult> Create([Bind("Id,city,state,name,conference,division,championshipsWon")] Team team, IFormFile TeamLogo)
         {
             if (ModelState.IsValid)
             {
+                if (TeamLogo != null && TeamLogo.Length >0)
+                {
+                    var memoryStream = new MemoryStream();
+                    await TeamLogo.CopyToAsync(memoryStream);
+                    team.TeamLogo = memoryStream.ToArray();
+                }
                 _context.Add(team);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
