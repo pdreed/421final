@@ -10,10 +10,9 @@ namespace _421final.Data
             : base(options)
         {
         }
-        public DbSet<_421final.Models.Team> Team { get; set; }
-        public DbSet<_421final.Models.Position> Position { get; set; }
-        public DbSet<_421final.Models.Player> Player { get; set; }
         public DbSet<_421final.Models.TeamStyle> TeamStyle { get; set; }
         public DbSet<_421final.Models.MyTeam> MyTeam { get; set; }
+        public DbSet<_421final.Models.TeamRoot> TeamRoot { get; set; }
+        public DbSet<_421final.Models.PlayerRoot> PlayerRoot { get; set; }
     }
 }

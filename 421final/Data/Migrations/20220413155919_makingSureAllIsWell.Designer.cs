@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _421final.Data;
 
@@ -11,9 +12,10 @@ using _421final.Data;
 namespace _421final.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220413155919_makingSureAllIsWell")]
+    partial class makingSureAllIsWell
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,6 +61,40 @@ namespace _421final.Data.Migrations
                     b.ToTable("MyTeam");
                 });
 
+            modelBuilder.Entity("_421final.Models.Player", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("PositionId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TeamId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("number")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("Player");
+                });
+
             modelBuilder.Entity("_421final.Models.PlayerRoot", b =>
                 {
                     b.Property<int>("Id")
@@ -93,6 +129,62 @@ namespace _421final.Data.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("PlayerRoot");
+                });
+
+            modelBuilder.Entity("_421final.Models.Position", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("abbrev")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("courtLocation")
+                        .HasColumnType("int");
+
+                    b.Property<string>("positionName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Position");
+                });
+
+            modelBuilder.Entity("_421final.Models.Team", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<byte[]>("TeamLogo")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int?>("championshipsWon")
+                        .HasColumnType("int");
+
+                    b.Property<string>("city")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("conference")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("division")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("state")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Team");
                 });
 
             modelBuilder.Entity("_421final.Models.TeamRoot", b =>
@@ -356,6 +448,25 @@ namespace _421final.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("TeamStyle");
+                });
+
+            modelBuilder.Entity("_421final.Models.Player", b =>
+                {
+                    b.HasOne("_421final.Models.Position", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("_421final.Models.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+
+                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("_421final.Models.PlayerRoot", b =>

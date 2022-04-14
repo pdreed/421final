@@ -28,14 +28,6 @@ namespace _421final.Views
                 return View(await _context.TeamRoot.ToListAsync());
         }
 
-        /*[HttpPost]
-        public ActionResult RecordCard(TeamRoot Model)
-        {
-
-            _ = Create(Model);
-            return View(Model);
-        }*/
-
 
         // GET: TeamRoots/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -96,7 +88,7 @@ namespace _421final.Views
         public async Task<IActionResult> Create()
         {
 
-            WebRequest request = WebRequest.Create("https://www.balldontlie.io/api/v1/teams");
+            /*WebRequest request = WebRequest.Create("https://www.balldontlie.io/api/v1/teams");
             WebResponse response = request.GetResponse();
             // Display the status.
             Console.WriteLine(((HttpWebResponse)response).StatusDescription);
@@ -133,7 +125,7 @@ namespace _421final.Views
                     transaction.Commit();
                 }
 
-            }
+            }*/
             
             return View();
         }
