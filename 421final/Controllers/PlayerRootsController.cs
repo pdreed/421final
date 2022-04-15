@@ -44,10 +44,7 @@ namespace _421final.Views
                 return NotFound();
             }
 
-            //string query = "SELECT TeamId FROM PlayerRoot WHERE Id=1";
-            //PlayerRoot department = await _context.PlayerRoot.FromSqlRaw(query).SingleOrDefaultAsync();
-            //var teamid = _context.PlayerRoot.FromSqlRaw("SELECT PlayerRoot.TeamId FROM dbo.PlayerRoot WHERE Id=1");
-            //var team = await _context.TeamRoot.FirstOrDefaultAsync(m => m.Id == playerRoot.Team.Id);
+            //getting the team from the TeamRoot context and passing it in the VM
             var dbTeamIdForPlayer = _context.PlayerRoot.Where(p => p.Id == id).Select(p => p.Team.Id);
             var dbTeam = await _context.TeamRoot.FirstOrDefaultAsync(m => m.Id == dbTeamIdForPlayer.First());
 
@@ -61,6 +58,7 @@ namespace _421final.Views
         // GET: PlayerRoots/Create
         public async Task<IActionResult> Create()
         {
+            //Code to pull in all the players to the database
             /*for (int j = 1; j < 39; j++)
             {
                 string num = j.ToString();
@@ -112,7 +110,6 @@ namespace _421final.Views
 
                 }
             }*/
-
             return View();
         }
 
@@ -121,13 +118,22 @@ namespace _421final.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,HeightFeet,HeightInches,LastName,Position,WeightPounds")] PlayerRoot playerRoot)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,HeightFeet,HeightInches,LastName,Position,WeightPounds,Team")] PlayerRoot playerRoot)
         {
+            var dbTeamForPlayer = _context.TeamRoot.Where(p => p.Abbreviation == playerRoot.Team.Abbreviation).Select(p => p);
+            playerRoot.Team = dbTeamForPlayer.First();
             if (ModelState.IsValid)
             {
-                _context.Add(playerRoot);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    _context.Add(playerRoot);
+                    _context.Database.ExecuteSqlRaw(@"SET IDENTITY_INSERT [dbo].[PlayerRoot] ON");
+                    await _context.SaveChangesAsync();
+                    _context.Database.ExecuteSqlRaw(@"SET IDENTITY_INSERT [dbo].[PlayerRoot] OFF");
+                    transaction.Commit();
+                    return RedirectToAction(nameof(Index));
+                    
+                }
             }
             return View(playerRoot);
         }

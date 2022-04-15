@@ -105,8 +105,6 @@ namespace _421final.Views
                     string jsonString = reader.ReadToEnd();
                     AllTeamsRoot? teamData = JsonSerializer.Deserialize<AllTeamsRoot>(jsonString);
                     //save to DB
-                    //_context.Database.ExecuteSqlRaw(@"SET IDENTITY_INSERT [dbo].[TeamRoot] ON");
-                    //await _context.SaveChangesAsync();
                     foreach (var i in (IEnumerable<TeamRoot>)teamData.Data)
                     {
                         TeamRoot newTeam = new TeamRoot();
