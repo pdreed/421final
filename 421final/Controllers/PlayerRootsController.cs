@@ -159,19 +159,28 @@ namespace _421final.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,HeightFeet,HeightInches,LastName,Position,WeightPounds")] PlayerRoot playerRoot)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,HeightFeet,HeightInches,LastName,Position,WeightPounds,Team")] PlayerRoot playerRoot)
         {
             if (id != playerRoot.Id)
             {
                 return NotFound();
             }
-
+            var dbTeamForPlayer = _context.TeamRoot.Where(p => p.Abbreviation == playerRoot.Team.Abbreviation).Select(p => p);
+            playerRoot.Team = dbTeamForPlayer.First();
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(playerRoot);
-                    await _context.SaveChangesAsync();
+                    using (var transaction = _context.Database.BeginTransaction())
+                    {
+                        _context.Update(playerRoot);
+                        _context.Database.ExecuteSqlRaw(@"SET IDENTITY_INSERT [dbo].[PlayerRoot] ON");
+                        await _context.SaveChangesAsync();
+                        _context.Database.ExecuteSqlRaw(@"SET IDENTITY_INSERT [dbo].[PlayerRoot] OFF");
+                        transaction.Commit();
+                        //return RedirectToAction(nameof(Index));
+
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
