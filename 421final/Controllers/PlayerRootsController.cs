@@ -121,7 +121,7 @@ namespace _421final.Views
         public async Task<IActionResult> Create([Bind("Id,FirstName,HeightFeet,HeightInches,LastName,Position,WeightPounds,Team")] PlayerRoot playerRoot)
         {
             var dbTeamForPlayer = _context.TeamRoot.Where(p => p.Abbreviation == playerRoot.Team.Abbreviation).Select(p => p);
-            playerRoot.Team = dbTeamForPlayer.First();
+            playerRoot.Team = dbTeamForPlayer.FirstOrDefault();
             if (ModelState.IsValid)
             {
                 using (var transaction = _context.Database.BeginTransaction())
@@ -132,7 +132,6 @@ namespace _421final.Views
                     _context.Database.ExecuteSqlRaw(@"SET IDENTITY_INSERT [dbo].[PlayerRoot] OFF");
                     transaction.Commit();
                     return RedirectToAction(nameof(Index));
-                    
                 }
             }
             return View(playerRoot);
@@ -166,7 +165,7 @@ namespace _421final.Views
                 return NotFound();
             }
             var dbTeamForPlayer = _context.TeamRoot.Where(p => p.Abbreviation == playerRoot.Team.Abbreviation).Select(p => p);
-            playerRoot.Team = dbTeamForPlayer.First();
+            playerRoot.Team = dbTeamForPlayer.FirstOrDefault();
             if (ModelState.IsValid)
             {
                 try
@@ -178,8 +177,6 @@ namespace _421final.Views
                         await _context.SaveChangesAsync();
                         _context.Database.ExecuteSqlRaw(@"SET IDENTITY_INSERT [dbo].[PlayerRoot] OFF");
                         transaction.Commit();
-                        //return RedirectToAction(nameof(Index));
-
                     }
                 }
                 catch (DbUpdateConcurrencyException)
