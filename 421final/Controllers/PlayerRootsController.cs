@@ -55,51 +55,60 @@ namespace _421final.Views
             PlayerRootTeamAndPlayerVM vm = new PlayerRootTeamAndPlayerVM();
             vm.player = playerRoot;
             vm.team = dbTeam;
-            //NOT SURE IF THIS WORKS!!!!! -----------------------------------------------------
-            while (true)
-            {
-                int year = 2021;
-                string yearString = year.ToString();
-                string playerID = id.ToString();
-                string web1 = "https://www.balldontlie.io/api/v1/season_averages?season=";
-                string web2 = "&player_ids[]=";
-                string address = web1 + yearString + web2 + playerID;
-                WebRequest request = WebRequest.Create(address);
-                WebResponse response = request.GetResponse();
-                // Display the status.
-                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
 
-                // Get the stream containing content returned by the server.
-                // The using block ensures the stream is automatically closed.
-                using (Stream dataStream = response.GetResponseStream())
+
+            bool active = false;
+            string playerID = id.ToString();
+            string web = "https://www.balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=";
+            string address = web + playerID;
+            WebRequest request = WebRequest.Create(address);
+            WebResponse response = request.GetResponse();
+            // Display the status.
+            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+
+            // Get the stream containing content returned by the server.
+            // The using block ensures the stream is automatically closed.
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                // Open the stream using a StreamReader for easy access.
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.
+                string jsonString = reader.ReadToEnd();
+                AllSeasonAvgsRoot? playerStats = JsonSerializer.Deserialize<AllSeasonAvgsRoot>(jsonString);
+                if (playerStats.Data.Count != 0)
                 {
-                    // Open the stream using a StreamReader for easy access.
-                    StreamReader reader = new StreamReader(dataStream);
-                    // Read the content.
-                    string jsonString = reader.ReadToEnd();
-                    AllSeasonAvgsRoot? playerStats = JsonSerializer.Deserialize<AllSeasonAvgsRoot>(jsonString);
-                    if (playerStats.Data.Count != 0)
-                    {
-                        vm.stats = playerStats.Data[0];
-                        break;
-                    }
-                    else
-                    {
-                        year--;
-                        continue;
-                    }
+                    vm.stats = playerStats.Data[0];
+                    active = true;
                 }
             }
-            //--------------------------------------------------------------------------------
+            
+            if (active == true)
+            {
+                vm.stats.FgPct = vm.stats.FgPct * 100;
+                vm.stats.Fg3Pct = vm.stats.Fg3Pct * 100;
+                vm.stats.FtPct = vm.stats.FtPct * 100;
 
-            vm.stats.FgPct = vm.stats.FgPct * 100;
-            vm.stats.Fg3Pct = vm.stats.Fg3Pct * 100;
-            vm.stats.FtPct = vm.stats.FtPct * 100;
+                vm.fgpct = (decimal?)vm.stats.FgPct;
+                vm.fg3pct = (decimal?)vm.stats.Fg3Pct;
+                vm.ftpct = (decimal?)vm.stats.FtPct;
 
-            vm.fgpct = (decimal?)vm.stats.FgPct;
-            vm.fg3pct = (decimal?)vm.stats.Fg3Pct;
-            vm.ftpct = (decimal?)vm.stats.FtPct;
-
+                vm.active = true;
+            }
+            /*else
+            {
+                vm.stats.Ast = 0;
+                vm.stats.Blk = 0;
+                vm.stats.Pts = 0;
+                vm.stats.Pf = 0;
+                vm.stats.Reb = 0;
+                vm.stats.Fg3Pct = 0;
+                vm.stats.FgPct = 0;
+                vm.stats.FtPct = 0;
+                vm.stats.Turnover = 0;
+                vm.stats.GamesPlayed = 0;
+                vm.stats.Min = "0"; 
+                vm.stats.Stl = 0;
+            }*/
             return View(vm);
         }
 

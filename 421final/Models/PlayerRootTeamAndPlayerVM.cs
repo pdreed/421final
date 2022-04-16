@@ -8,6 +8,7 @@
         public decimal? fgpct { get; set; }
         public decimal? fg3pct { get; set; }
         public decimal? ftpct { get; set; }
+        public bool active { get; set; }
 
     }
 }
