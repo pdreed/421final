@@ -1,4 +1,4 @@
-﻿@model _421final.Models.PlayerRoot
+﻿@model _421final.Models.PlayerRootTeamAndPlayerVM
 
 @{
     ViewData["Title"] = "Delete";
@@ -11,46 +11,52 @@
     <h4>PlayerRoot</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.player.FirstName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.player.FirstName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HeightFeet)
+            @Html.DisplayNameFor(model => model.player.LastName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HeightFeet)
+            @Html.DisplayFor(model => model.player.LastName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HeightInches)
+            @Html.DisplayNameFor(model => model.player.Position)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HeightInches)
+            @Html.DisplayFor(model => model.player.Position)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
+            Team
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
+            @Html.DisplayFor(model => model.team.FullName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Position)
+            @Html.DisplayNameFor(model => model.player.HeightFeet)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Position)
+            @Html.DisplayFor(model => model.player.HeightFeet)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WeightPounds)
+            @Html.DisplayNameFor(model => model.player.HeightInches)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WeightPounds)
+            @Html.DisplayFor(model => model.player.HeightInches)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.player.WeightPounds)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.player.WeightPounds)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="player.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

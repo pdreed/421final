@@ -48,7 +48,7 @@ namespace _421final.Views
             var dbTeamIdForPlayer = _context.PlayerRoot.Where(p => p.Id == id).Select(p => p.Team.Id);
             var dbTeam = await _context.TeamRoot.FirstOrDefaultAsync(m => m.Id == dbTeamIdForPlayer.First());
 
-            PlayerRootDetailsVM vm = new PlayerRootDetailsVM();
+            PlayerRootTeamAndPlayerVM vm = new PlayerRootTeamAndPlayerVM();
             vm.player = playerRoot;
             vm.team = dbTeam;
 
@@ -210,7 +210,14 @@ namespace _421final.Views
                 return NotFound();
             }
 
-            return View(playerRoot);
+            var dbTeamIdForPlayer = _context.PlayerRoot.Where(p => p.Id == id).Select(p => p.Team.Id);
+            var dbTeam = await _context.TeamRoot.FirstOrDefaultAsync(m => m.Id == dbTeamIdForPlayer.First());
+
+            PlayerRootTeamAndPlayerVM vm = new PlayerRootTeamAndPlayerVM();
+            vm.player = playerRoot;
+            vm.team = dbTeam;
+
+            return View(vm);
         }
 
         // POST: PlayerRoots/Delete/5
