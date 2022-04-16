@@ -55,6 +55,94 @@
     </dl>
 </div>
 <div>
+    <h4>2021-2022 Season Averages</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    GP
+                </th>
+                <th>
+                    MIN
+                </th>
+                <th>
+                    FG%
+                </th>
+                <th>
+                    3PT%
+                </th>
+                <th>
+                    FT%
+                </th>
+                <th>
+                    PTS
+                </th>
+                <th>
+                    AST
+                </th>
+                <th>
+                    REB
+                </th>
+                <th>
+                    STL
+                </th>
+                <th>
+                    BLK
+                </th>
+                <th>
+                    TO
+                </th>
+                <th>
+                    PF
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.GamesPlayed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.Min)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.fgpct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.fg3pct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.ftpct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.Pts)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.Ast)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.Reb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.Stl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.Blk)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.Turnover)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.stats.Pf)
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
     <a asp-action="Edit" asp-route-id="@Model?.player.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

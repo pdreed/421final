@@ -10,6 +10,7 @@ using _421final.Data;
 using _421final.Models;
 using System.Net;
 using System.Text.Json;
+using System.Globalization;
 
 namespace _421final.Views
 {
@@ -34,6 +35,7 @@ namespace _421final.Views
         // GET: PlayerRoots/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -53,6 +55,34 @@ namespace _421final.Views
             PlayerRootTeamAndPlayerVM vm = new PlayerRootTeamAndPlayerVM();
             vm.player = playerRoot;
             vm.team = dbTeam;
+
+
+            string playerID = id.ToString();
+            string web = "https://www.balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=";
+            string address = web + playerID;
+            WebRequest request = WebRequest.Create(address);
+            WebResponse response = request.GetResponse();
+            // Display the status.
+            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+
+            // Get the stream containing content returned by the server.
+            // The using block ensures the stream is automatically closed.
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                // Open the stream using a StreamReader for easy access.
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.
+                string jsonString = reader.ReadToEnd();
+                AllSeasonAvgsRoot? playerStats = JsonSerializer.Deserialize<AllSeasonAvgsRoot>(jsonString);
+                vm.stats = playerStats.Data[0];
+            }
+            vm.stats.FgPct = vm.stats.FgPct * 100;
+            vm.stats.Fg3Pct = vm.stats.Fg3Pct * 100;
+            vm.stats.FtPct = vm.stats.FtPct * 100;
+
+            vm.fgpct = (decimal?)vm.stats.FgPct;
+            vm.fg3pct = (decimal?)vm.stats.Fg3Pct;
+            vm.ftpct = (decimal?)vm.stats.FtPct;
 
             return View(vm);
         }
@@ -83,8 +113,6 @@ namespace _421final.Views
                         string jsonString = reader.ReadToEnd();
                         AllPlayersRoot? playerData = JsonSerializer.Deserialize<AllPlayersRoot>(jsonString);
                         //save to DB
-                        //_context.Database.ExecuteSqlRaw(@"SET IDENTITY_INSERT [dbo].[TeamRoot] ON");
-                        //await _context.SaveChangesAsync();
                         foreach (var i in (IEnumerable<PlayerRoot>)playerData.Data)
                         {
                             
