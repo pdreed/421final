@@ -25,8 +25,10 @@ namespace _421final.Views
         // GET: PlayerRoots
         public async Task<IActionResult> Index()
         {
-
-            return View(await _context.PlayerRoot.ToListAsync());
+            PlayerRootIndexVM vm = new PlayerRootIndexVM();
+            vm.playerList = await _context.PlayerRoot.ToListAsync();
+            vm.teamList = await _context.TeamRoot.ToListAsync();
+            return View(vm);
         }
 
         // GET: PlayerRoots/Details/5

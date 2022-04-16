@@ -1,4 +1,4 @@
-﻿@model IEnumerable<_421final.Models.PlayerRoot>
+﻿@model _421final.Models.PlayerRootIndexVM
 
 @{
     ViewData["Title"] = "Index";
@@ -13,43 +13,49 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HeightFeet)
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HeightInches)
+                Position
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                Team Abbreviation
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Position)
+                HeightFeet
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WeightPounds)
+                HeightInches
+            </th>
+            <th>
+                WeightPounds
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.playerList) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HeightFeet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HeightInches)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team.Abbreviation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightFeet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightInches)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.WeightPounds)
