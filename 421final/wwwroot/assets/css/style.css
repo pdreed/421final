@@ -110,12 +110,15 @@ body {
   margin:0 auto;
 }
 
-.boxed_wrapper{
-  position: relative;
-  margin: 0 auto;
-  overflow: hidden !important;
-  width: 100%;
-  min-width: 300px;
+/* change the width back to 100% for default */
+.boxed_wrapper {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden !important;
+    width:100%;
+    min-width: 300px;
+  
+   
 }
 
 
@@ -2159,19 +2162,25 @@ div#mCSB_1_container{
 
 
 /** banner-section **/
-
-.banner-section{
-  position: relative;
-  overflow: hidden;
+/** width must be fixed back to 100% **/
+.banner-section {
+    position: relative;
+    overflow: hidden;
+    width:100%    
+    
 }
 
 .banner-carousel{
   position: relative;
+
+  
 }
 
-.banner-carousel .slide-item{
+.banner-carousel .slide-item {
   position: relative;
-  padding: 144px 0px 256px 0px;
+  padding: 144px 0px 350px 0px;
+  
+        
 }
 
 .banner-carousel .slide-item:before{
@@ -2184,6 +2193,7 @@ div#mCSB_1_container{
   right: 0px;
   opacity: 0.65;
   z-index: 1;
+
 }
 
 .banner-carousel .slide-item .image-layer{
@@ -2219,6 +2229,7 @@ div#mCSB_1_container{
   z-index:5;
 }
 
+/*This is will make the "NBA" Section ease into the frame. do not mess with*/
 .banner-carousel .content-box h6{
   position: relative;
   display: block;
@@ -2248,6 +2259,7 @@ div#mCSB_1_container{
   top: 0px;
 }
 
+/*This is the transition time for the NBA logo, match this up with the timing of the other content boxes and the .owl-carousel .animate function on owl.css*/
 .banner-carousel .active .content-box h6{
   opacity: 1;
   -webkit-transform: translateY(0);
@@ -2261,6 +2273,8 @@ div#mCSB_1_container{
   -o-transition-delay: 1000ms;
   transition-delay: 1000ms;
 }
+
+
 
 .banner-carousel .content-box h1{
   position: relative;
@@ -2283,6 +2297,7 @@ div#mCSB_1_container{
   transition: all 1000ms ease;
 }
 
+ /*This is the transition time for the h1 attributes, match this up with the timing of the other content boxes and the .owl-carousel .animate function on owl.css*/
 .banner-carousel .active .content-box h1{
   opacity: 1;
   -webkit-transform: translateX(0);
@@ -2317,6 +2332,9 @@ div#mCSB_1_container{
   transition: all 1000ms ease;
 }
 
+
+
+/*This is the transition time for the p attributes, match this up with the timing of the other content boxes and the .owl-carousel .animate function on owl.css*/
 .banner-carousel .active .content-box p{
   opacity: 1;
   -webkit-transform: translateX(0);
@@ -2376,6 +2394,7 @@ div#mCSB_1_container{
   width: 100%;
 }
 
+
 .banner-section .owl-nav .owl-prev,
 .banner-section .owl-nav .owl-next{
   position: absolute;
@@ -2384,11 +2403,9 @@ div#mCSB_1_container{
   height: 60px;
   line-height: 60px;
   font-size: 30px;
-  color: #ffffff;
+  color: transparent;
   text-align: center;
-  border: 2px solid #ffffff;
-  border-radius: 5px;
-  cursor: pointer;
+  
   background: transparent;
   transition: all 500ms ease;
 }
@@ -2400,6 +2417,7 @@ div#mCSB_1_container{
 .banner-section .owl-nav .owl-next{
   right: 50px;
 }
+
 
 .banner-section .owl-nav .owl-prev:hover,
 .banner-section .owl-nav .owl-next:hover{

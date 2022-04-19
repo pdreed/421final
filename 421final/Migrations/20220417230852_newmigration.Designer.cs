@@ -9,11 +9,11 @@ using _421final.Data;
 
 #nullable disable
 
-namespace _421final.Data.Migrations
+namespace _421final.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220409213355_addedMyTeamandTeamStyle")]
-    partial class addedMyTeamandTeamStyle
+    [Migration("20220417230852_newmigration")]
+    partial class newmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace _421final.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("_421final.Models.Player", b =>
+            modelBuilder.Entity("_421final.Models.PlayerRoot", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,33 +32,35 @@ namespace _421final.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("PositionId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TeamId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("number")
+                    b.Property<int?>("HeightFeet")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HeightInches")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Position")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WeightPounds")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PositionId");
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Player");
+                    b.ToTable("PlayerRoot");
                 });
 
-            modelBuilder.Entity("_421final.Models.Position", b =>
+            modelBuilder.Entity("_421final.Models.TeamRoot", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,52 +68,30 @@ namespace _421final.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("abbrev")
+                    b.Property<string>("Abbreviation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("courtLocation")
+                    b.Property<int?>("Championships")
                         .HasColumnType("int");
 
-                    b.Property<string>("positionName")
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Conference")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Division")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Position");
-                });
-
-            modelBuilder.Entity("_421final.Models.Team", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<byte[]>("TeamLogo")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int?>("championshipsWon")
-                        .HasColumnType("int");
-
-                    b.Property<string>("city")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("conference")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("division")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("state")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Team");
+                    b.ToTable("TeamRoot");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -316,21 +296,11 @@ namespace _421final.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("_421final.Models.Player", b =>
+            modelBuilder.Entity("_421final.Models.PlayerRoot", b =>
                 {
-                    b.HasOne("_421final.Models.Position", "Position")
+                    b.HasOne("_421final.Models.TeamRoot", "Team")
                         .WithMany()
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("_421final.Models.Team", "Team")
-                        .WithMany()
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Position");
+                        .HasForeignKey("TeamId");
 
                     b.Navigation("Team");
                 });

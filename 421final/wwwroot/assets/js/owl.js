@@ -2960,6 +2960,8 @@
 	 * @public
 	 * @todo Rename `slideBy` to `navBy`
 	 */
+
+	
 	Navigation.Defaults = {
 		nav: false,
 		navText: [
@@ -2970,10 +2972,13 @@
 		navElement: 'button type="button" role="presentation"',
 		navContainer: false,
 		navContainerClass: 'owl-nav',
+
+
 		navClass: [
 			'owl-prev',
 			'owl-next'
 		],
+
 		slideBy: 1,
 		dotClass: 'owl-dot',
 		dotsClass: 'owl-dots',
