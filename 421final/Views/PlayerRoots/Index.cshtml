@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="allPlayers" class="display" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -34,39 +34,46 @@
             <th>
                 WeightPounds
             </th>
-            <th></th>
+            <th>
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.playerList) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Position)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Team.Abbreviation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HeightFeet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HeightInches)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WeightPounds)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.playerList) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.Abbreviation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeightFeet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeightInches)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WeightPounds)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<script>
+$(document).ready( function () {
+    $('#allPlayers').DataTable();
+} );
+</script>
