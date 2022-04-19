@@ -2,70 +2,133 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "_PlayerRootLayout";
 }
 
-<h1>Create</h1>
 
-<h4>PlayerRoot</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" id="form">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Position" class="control-label"></label>
-                <input asp-for="Position" class="form-control" />
-                <span asp-validation-for="Position" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Team.Abbreviation" class="control-label">Team Abbreviation</label>
-                <input asp-for="Team.Abbreviation" class="form-control" required/>
-                <span asp-validation-for="Team.Abbreviation" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HeightFeet" class="control-label"></label>
-                <input asp-for="HeightFeet" class="form-control" />
-                <span asp-validation-for="HeightFeet" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HeightInches" class="control-label"></label>
-                <input asp-for="HeightInches" class="form-control" />
-                <span asp-validation-for="HeightInches" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="WeightPounds" class="control-label"></label>
-                <input asp-for="WeightPounds" class="form-control" />
-                <span asp-validation-for="WeightPounds" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-        <script>
-            $("#form").validate();
-        </script>
-    </div>
-</div>
+<!-- Fav Icon -->
+<link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<!-- Stylesheets -->
+<link href="/assets/css/font-awesome-all.css" rel="stylesheet">
+<link href="/assets/css/flaticon.css" rel="stylesheet">
+<link href="/assets/css/owl.css" rel="stylesheet">
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet">
+<link href="/assets/css/animate.css" rel="stylesheet">
+<link href="/assets/css/nice-select.css" rel="stylesheet">
+<link href="/assets/css/color.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/responsive.css" rel="stylesheet">
+
+
+<body>
+
+    <!--<section class="page-title" style="background-image: url(/assets/images/background/test.jpeg);">
+        <div class="auto-container">
+            <div class="content-box">
+                <div class="title centred">
+                    <h1>Players</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a asp-area="" asp-class="nav-link" asp-controller="Home" asp-action="Index" style="color: red;">Home</a></li>
+                    <li>Players</li>
+                </ul>
+            </div>
+        </div>
+     </section>-->
+
+
+     <section class="input m-4">
+        <h1 style="color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 54px; font-weight: 500; line-height: 64px; margin: 0 0 0; padding: 20px 30px; text-align: center; text-transform: uppercase;">Add a New Player</h1>
+
+        <h4 style="font-size: 30px; letter-spacing: -1px; color: #DFBF84; text-transform: uppercase; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: center; line-height: 50px; ">This page is useful for adding players that recently entered the league.</h4>
+        <hr />
+        <div class="row m-4">
+            <div class="col-md-4">
+                <form asp-action="Create" id="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Id" class="control-label">Database ID</label>
+                        <input asp-for="Id" class="form-control" />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label">First Name</label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label">Last Name</label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Position" class="control-label"></label>
+                        <input asp-for="Position" class="form-control" />
+                        <span asp-validation-for="Position" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Team.Abbreviation" class="control-label">Team Abbreviation</label>
+                        <input asp-for="Team.Abbreviation" class="form-control" required/>
+                        <span asp-validation-for="Team.Abbreviation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HeightFeet" class="control-label">Height (Feet)</label>
+                        <input asp-for="HeightFeet" class="form-control" />
+                        <span asp-validation-for="HeightFeet" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HeightInches" class="control-label">Height (Inches)</label>
+                        <input asp-for="HeightInches" class="form-control" />
+                        <span asp-validation-for="HeightInches" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WeightPounds" class="control-label">Weight</label>
+                        <input asp-for="WeightPounds" class="form-control" />
+                        <span asp-validation-for="WeightPounds" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+                <script>
+                    $("#form").validate();
+                </script>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </section>
+
+
+
+    <!-- jequery plugins -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/jquery.fancybox.js"></script>
+    <script src="assets/js/appear.js"></script>
+    <script src="assets/js/scrollbar.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/nav-tool.js"></script>
+    <script src="assets/js/isotope.js"></script>
+
+    <!-- main-js -->
+    <script src="assets/js/script.js"></script>
+
+</body>
+
