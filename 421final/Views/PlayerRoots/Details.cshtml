@@ -5,24 +5,11 @@
     Layout = "_PlayerRootLayout";
 }
 
-<h1>Details</h1>
+<h1 style="text-align: center; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">@Html.DisplayFor(model => model.player.FirstName) @Html.DisplayFor(model => model.player.LastName)</h1>
 
-<div>
-    <h4>PlayerRoot</h4>
+<div class="player-info m-4">
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.player.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.player.LastName)
-        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.player.Position)
         </dt>
@@ -36,26 +23,26 @@
             @Html.DisplayFor(model => model.team.FullName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.HeightFeet)
+            Height (Feet)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.player.HeightFeet)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.HeightInches)
+            Height (Inches)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.player.HeightInches)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.WeightPounds)
+            Weight
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.player.WeightPounds)
         </dd>
     </dl>
 </div>
-<div>
+<div class="player-stats m-4">
     <h4>2021-2022 Season Averages</h4>
     <hr />
     <table class="table">
@@ -143,7 +130,7 @@
     </table>
 </div>
 
-<div>
+<div class="buttons m-4">
     <a asp-action="Edit" asp-route-id="@Model?.player.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
