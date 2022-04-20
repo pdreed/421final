@@ -1,15 +1,15 @@
 ﻿@model _421final.Models.PlayerRootIndexVM
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "_PlayerRootLayout";
 }
 
-<h1>Index</h1>
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">Every Player Since 1979</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p style="text-align: center;">
+    <a asp-action="Create" class="create-button m-5" style="font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">Add New</a>
 </p>
-<table class="table">
+<table id="allPlayers" class="hover m-5" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
     <thead>
         <tr>
             <th>
@@ -25,47 +25,54 @@
                 Team Abbreviation
             </th>
             <th>
-                HeightFeet
+                Height (Feet)
             </th>
             <th>
-                HeightInches
+                Height (Inches)
             </th>
             <th>
-                WeightPounds
+                Weight (Lbs)
             </th>
-            <th></th>
+            <th>
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.playerList) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Position)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Team.Abbreviation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HeightFeet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HeightInches)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WeightPounds)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.playerList) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.Abbreviation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeightFeet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeightInches)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WeightPounds)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<script>
+$(document).ready( function () {
+    $('#allPlayers').DataTable();
+} );
+</script>

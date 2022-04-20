@@ -1,27 +1,14 @@
 ﻿@model _421final.Models.PlayerRootTeamAndPlayerVM
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "_PlayerRootLayout";
 }
 
-<h1>Details</h1>
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">@Html.DisplayFor(model => model.player.FirstName) @Html.DisplayFor(model => model.player.LastName), @Html.DisplayFor(model => model.team.Abbreviation)</h1>
 
-<div>
-    <h4>PlayerRoot</h4>
+<div class="player-info m-4" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.player.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.player.LastName)
-        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.player.Position)
         </dt>
@@ -29,36 +16,30 @@
             @Html.DisplayFor(model => model.player.Position)
         </dd>
         <dt class = "col-sm-2">
-            Team
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.team.FullName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.HeightFeet)
+            Height (Feet)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.player.HeightFeet)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.HeightInches)
+            Height (Inches)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.player.HeightInches)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.player.WeightPounds)
+            Weight (Lbs)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.player.WeightPounds)
         </dd>
     </dl>
 </div>
-<div>
-    <h4>2021-2022 Season Averages</h4>
+<div class="player-stats m-4">
+    <h4 style="font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">2021-2022 Season Averages</h4>
     <hr />
-    <table class="table">
-        <thead>
+    <table class="table" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
+        <thead style="border: 1px solid; background-color: lightgray;">
             <tr>
                 <th>
                     GP
@@ -142,7 +123,15 @@
     </table>
 </div>
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.player.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="buttons m-4">
+    <a asp-action="Edit" asp-route-id="@Model?.player.Id"  style="background-color: black;border: none;color: white; border-radius: 5px;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;">Edit</a> |
+    <a asp-action="Index"  style="background-color: black;border: none;color: white; border-radius: 5px;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;">Return to List</a>
 </div>

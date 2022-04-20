@@ -17,5 +17,7 @@
         public string? searchErrorMsg { get; set; }
         public string? errorMsg1 { get; set; }
         public string? errorMsg2 { get; set; }
+        public string? year1 { get; set; }
+        public string? year2 { get; set; }
     }
 }

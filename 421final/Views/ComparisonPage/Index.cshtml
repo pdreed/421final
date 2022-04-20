@@ -1,7 +1,7 @@
 ﻿@model _421final.Models.ComparisonPage
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "_ComparisonLayout";
 }
 
 <table id="search-bar-table" class = "search-bar-table">
@@ -22,12 +22,20 @@
 
 
 <p>
-    Please use the following format to search for two players: {First Last Year,First Last Year}
+    Please use the following format to compare two players: {First Last Year, First Last Year}
 </p>
 
 
 <table id="main-table" class ="main-table">
     <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.year1)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.year2)
+            </td>
+        </tr>
         <tr>
             <td>
                 <table id="header-table1" class="header-table1">

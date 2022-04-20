@@ -43,51 +43,13 @@ namespace _421final.Views
             {
                 return NotFound();
             }
-
-            /*List<TeamRoot> listOfTeams = new List<TeamRoot>();
-
-            WebRequest request = WebRequest.Create("https://www.balldontlie.io/api/v1/teams");
-            WebResponse response = request.GetResponse();
-            // Display the status.
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-
-            // Get the stream containing content returned by the server.
-            // The using block ensures the stream is automatically closed.
-            using (Stream dataStream = response.GetResponseStream())
-            {
-                // Open the stream using a StreamReader for easy access.
-                StreamReader reader = new StreamReader(dataStream);
-                // Read the content.
-                string jsonString = reader.ReadToEnd();
-                AllTeamsRoot? teamData = JsonSerializer.Deserialize<AllTeamsRoot>(jsonString);
-                //save to DB
-                foreach (var i in (IEnumerable<AllTeamsDef>)teamData.Data)
-                {
-                    TeamRoot newTeam = new TeamRoot();
-                    //newTeam.Id = i.Id;
-                    newTeam.Abbreviation = i.Abbreviation;
-                    newTeam.City = i.City;
-                    newTeam.Conference = i.Conference;
-                    newTeam.Division = i.Division;
-                    newTeam.FullName = i.FullName;
-                    newTeam.Name = i.Name;
-                    listOfTeams.Add(newTeam);
-
-                }
-
-            }
-            for (int i = 0; i < 30; i++)
-            {
-                _ = Create(listOfTeams[i]);
-            }*/
-
             return View(teamRoot);
         }
 
         // GET: TeamRoots/Create
         public async Task<IActionResult> Create()
         {
-
+            //retrieves all 30 teams and stores in database
             /*WebRequest request = WebRequest.Create("https://www.balldontlie.io/api/v1/teams");
             WebResponse response = request.GetResponse();
             // Display the status.

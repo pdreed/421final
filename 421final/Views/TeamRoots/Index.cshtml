@@ -1,34 +1,28 @@
 ﻿@model IEnumerable<_421final.Models.TeamRoot>
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "_TeamRootLayout";
 }
 
-<h1>Index</h1>
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">All 30 Teams</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p style="text-align: center;">
+    <a asp-action="Create" style="font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">Add New</a>
 </p>
-<table class="table">
+<table class="table" id="allTeams" class="hover m-5" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Abbreviation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                Team
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Conference)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Division)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Championships)
@@ -42,20 +36,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Abbreviation)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
+                        <td>
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Conference)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Division)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Championships)
@@ -69,3 +57,9 @@
 }
     </tbody>
 </table>
+
+<script>
+$(document).ready( function () {
+    $('#allTeams').DataTable();
+} );
+</script>

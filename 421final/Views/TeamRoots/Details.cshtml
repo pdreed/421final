@@ -1,13 +1,12 @@
 ﻿@model _421final.Models.TeamRoot
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "_TeamRootLayout";
 }
 
-<h1>Details</h1>
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">@Html.DisplayFor(model => model.FullName)</h1>
 
-<div>
-    <h4>TeamRoot</h4>
+<div class="team-info m-4" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -23,6 +22,12 @@
             @Html.DisplayFor(model => model.City)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Conference)
         </dt>
         <dd class = "col-sm-10">
@@ -35,18 +40,6 @@
             @Html.DisplayFor(model => model.Division)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Championships)
         </dt>
         <dd class = "col-sm-10">
@@ -56,6 +49,14 @@
 </div>
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" style="background-color: black;border: none;color: white; border-radius: 5px;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;">Edit</a> |
+    <a asp-action="Index" style="background-color: black;border: none;color: white; border-radius: 5px;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;">Back to List</a>
 </div>

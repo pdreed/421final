@@ -1,16 +1,15 @@
 ﻿@model _421final.Models.TeamRoot
 
 @{
-    ViewData["Title"] = "Delete";
+    Layout = "_TeamRootLayout";
 }
 
-<h1>Delete</h1>
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">Are you sure you want to delete the @Html.DisplayFor(model => model.FullName)?</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>TeamRoot</h4>
+    <h4 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">If deleted, the @Html.DisplayFor(model => model.FullName) will no longer exist in the database.</h4>
     <hr />
-    <dl class="row">
+    <dl class="row" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Abbreviation)
         </dt>
@@ -22,6 +21,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Conference)
@@ -36,18 +41,6 @@
             @Html.DisplayFor(model => model.Division)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Championships)
         </dt>
         <dd class = "col-sm-10">
@@ -58,6 +51,10 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index" style="background-color: black;border: none;color: white; border-radius: 5px;
+          padding: 16px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          cursor: pointer;">Return to List</a>
     </form>
 </div>

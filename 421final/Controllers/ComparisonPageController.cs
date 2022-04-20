@@ -33,7 +33,7 @@ namespace _421final.Views
             var dbBooker = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 57);
             temp2.Add(dbBooker);
             vm.playerList1 = temp;
-            vm.playerList2 = temp;
+            vm.playerList2 = temp2;
 
             return View(vm);
         }
@@ -51,7 +51,7 @@ namespace _421final.Views
             vm.errorMsg1 = "";
             vm.errorMsg2 = "";
             vm.searchErrorMsg = "";
-            string[] words = textBoxValue.Split(",");
+            string[] words = textBoxValue.Split(", ");
             string[]? firstSearch = null;
             string[]? secondSearch = null;
             if (words.Length == 2)
@@ -98,6 +98,7 @@ namespace _421final.Views
                     string webStats = "https://www.balldontlie.io/api/v1/season_averages?season=";
                     string webStats2 = "&player_ids[]=";
                     string addressStats = webStats + firstSearch[2] + webStats2 + vm.playerList1[0].Id.ToString();
+                    vm.year1 = firstSearch[2];
                     WebRequest requestStats = WebRequest.Create(addressStats);
                     WebResponse responseStats = requestStats.GetResponse();
                     // Display the status.
@@ -148,7 +149,7 @@ namespace _421final.Views
                         vm.fgpct1 = 0;
                         vm.fg3pct1 = 0;
                         vm.ftpct1 = 0;
-                        vm.errorMsg1 = "Player Did Not Particpate During The Entered Year";
+                        vm.errorMsg1 = firstSearch[0] + " " + firstSearch[1] + " did not participate during the entered year.";
                     }
 
                 }
@@ -218,6 +219,7 @@ namespace _421final.Views
                     string webStatsPlayer2 = "https://www.balldontlie.io/api/v1/season_averages?season=";
                     string webStatsPlayer2b = "&player_ids[]=";
                     string addressStats2 = webStatsPlayer2 + secondSearch[2] + webStatsPlayer2b + vm.playerList2[0].Id.ToString();
+                    vm.year2 = secondSearch[2];
                     WebRequest requestStats2 = WebRequest.Create(addressStats2);
                     WebResponse responseStats2 = requestStats2.GetResponse();
                     // Display the status.
@@ -267,7 +269,7 @@ namespace _421final.Views
                         vm.fg3pct2 = 0;
                         vm.ftpct2 = 0;
                         vm.player2Stats = tempAvg;
-                        vm.errorMsg2 = "Player Did Not Particpate During The Entered Year";
+                        vm.errorMsg2 = secondSearch[0] + " " + secondSearch[1] + " did not participate during the entered year.";
                     }
                 }
                 else
