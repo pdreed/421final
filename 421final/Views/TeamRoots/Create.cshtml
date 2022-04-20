@@ -2,14 +2,15 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "_PlayerRootLayout";
 }
 
-<h1>Create</h1>
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">Add a New Team</h1>
 
-<h4>TeamRoot</h4>
+<h4 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">This page is useful for creating new expansion teams.</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -18,9 +19,19 @@
                 <span asp-validation-for="Abbreviation" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="FullName" class="control-label">Full Name (City + Name)</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Conference" class="control-label"></label>
@@ -31,16 +42,6 @@
                 <label asp-for="Division" class="control-label"></label>
                 <input asp-for="Division" class="form-control" />
                 <span asp-validation-for="Division" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Championships" class="control-label"></label>
@@ -55,7 +56,11 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" style="background-color: red;border: none;color: white; border-radius: 5px;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;">Cancel</a>
 </div>
 
 @section Scripts {
