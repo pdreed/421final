@@ -51,7 +51,7 @@ namespace _421final.Views
             vm.errorMsg1 = "";
             vm.errorMsg2 = "";
             vm.searchErrorMsg = "";
-            string[] words = textBoxValue.Split(",");
+            string[] words = textBoxValue.Split(", ");
             string[]? firstSearch = null;
             string[]? secondSearch = null;
             if (words.Length == 2)
