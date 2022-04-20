@@ -34,6 +34,7 @@ namespace _421final.Views
             temp2.Add(dbBooker);
             vm.playerList1 = temp;
             vm.playerList2 = temp2;
+            vm.playerListHeader = "Suggested players";
 
             return View(vm);
         }
@@ -51,6 +52,7 @@ namespace _421final.Views
             vm.errorMsg1 = "";
             vm.errorMsg2 = "";
             vm.searchErrorMsg = "";
+            vm.playerListHeader = "Results";
             string[] words = textBoxValue.Split(", ");
             string[]? firstSearch = null;
             string[]? secondSearch = null;

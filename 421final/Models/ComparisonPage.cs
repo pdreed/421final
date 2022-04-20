@@ -19,5 +19,6 @@
         public string? errorMsg2 { get; set; }
         public string? year1 { get; set; }
         public string? year2 { get; set; }
+        public string? playerListHeader { get; set; }
     }
 }
