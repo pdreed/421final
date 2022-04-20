@@ -5,12 +5,12 @@
     Layout = "_PlayerRootLayout";
 }
 
-<h1>Index</h1>
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">Every Player Since 1979</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p style="text-align: center;">
+    <a asp-action="Create" class="create-button m-5" style="font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">Add New</a>
 </p>
-<table id="allPlayers" class="display" style="width:100%">
+<table id="allPlayers" class="hover m-5" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
     <thead>
         <tr>
             <th>
@@ -26,13 +26,13 @@
                 Team Abbreviation
             </th>
             <th>
-                HeightFeet
+                Height (Feet)
             </th>
             <th>
-                HeightInches
+                Height (Inches)
             </th>
             <th>
-                WeightPounds
+                Weight (Lbs)
             </th>
             <th>
             </th>
