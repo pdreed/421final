@@ -67,7 +67,24 @@ namespace _421final.Views
                 if (words.Length == 2)
                 {
                     firstSearch = words[0].Split(" ");
+                    if (firstSearch.Length != 3)
+                    {
+                        badInput = true;
+                        vm.searchErrorMsg = "Incorrect Format";
+                    }
                     secondSearch = words[1].Split(" ");
+                    if (secondSearch.Length != 3)
+                    {
+                        badInput = true;
+                        vm.searchErrorMsg = "Incorrect Format";
+                    }
+                    if (firstSearch[0] == "" || secondSearch[0] == "")
+                    {
+                        badInput = true;
+                        vm.searchErrorMsg = "Incorrect Format";
+                        //string[] temp = { " ", " ", " " };
+                        //secondSearch = temp;
+                    }
                 }
                 else
                 {
