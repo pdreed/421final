@@ -20,21 +20,19 @@ namespace _421final.Views
             ComparisonPage vm = new ComparisonPage();
             List<PlayerRoot> temp = new List<PlayerRoot>();
             List<PlayerRoot> temp2 = new List<PlayerRoot>();
-            var dbLebron = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 237);
-            temp.Add(dbLebron);
-            var dbKD = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 140);
-            temp.Add(dbKD);
-            var dbHarden = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 192);
-            temp.Add(dbHarden);
-            var dbSteph = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 115);
-            temp2.Add(dbSteph);
-            var dbJoel = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 145);
-            temp2.Add(dbJoel);
-            var dbBooker = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 57);
-            temp2.Add(dbBooker);
-            vm.playerList1 = temp;
-            vm.playerList2 = temp2;
-            vm.playerListHeader = "Suggested players";
+            
+             var dbLebron = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 237);
+             temp.Add(dbLebron);
+             var dbSteph = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 115);
+             temp2.Add(dbSteph);
+             vm.playerList1 = temp;
+             vm.playerList2 = temp2;
+             vm.playerListHeader = "Suggested Players";
+            
+
+            
+
+
 
             return View(vm);
         }
@@ -52,7 +50,7 @@ namespace _421final.Views
             vm.errorMsg1 = "";
             vm.errorMsg2 = "";
             vm.searchErrorMsg = "";
-            vm.playerListHeader = "Results";
+            vm.playerListHeader = "Player Bio";
             string[] words = textBoxValue.Split(", ");
             string[]? firstSearch = null;
             string[]? secondSearch = null;
@@ -93,7 +91,9 @@ namespace _421final.Views
                         searchForStats1 = true;
                     }
 
+                  
                 }
+                
 
                 if (searchForStats1 == true)
                 {
@@ -325,5 +325,8 @@ namespace _421final.Views
 
             return View(vm);
         }
+
+
+        
     }
 }

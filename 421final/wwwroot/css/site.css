@@ -16,3 +16,94 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+   
+}
+
+#actual-search-bar{
+    background-color: snow;
+    min-width:183px;
+    width: 900px;
+    border-radius: 10px;
+    border: 2px solid black; 
+    min-height: 30px;
+    height: 40px;
+}
+
+
+#p-superScript {
+    padding: 0px 0px 0px 40px;
+    font-family: 'DejaVu Sans Mono', monospace;
+}
+
+.results-section {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 26px;
+    
+}
+
+#header{
+    font-weight:bold;
+}
+
+.fixed-container {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+
+}
+
+.year-1 {
+    width: 406px;
+    padding: 0px 0px 0px 5px;
+    font-family: 'DejaVu Sans Mono', monospace;
+}
+
+.name-div {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    
+}
+
+
+
+
+.first-name {
+    padding: 0px 0px 0px 25px;
+    width: 353px;
+}
+.last-name {
+    padding: 0px 0px 0px 5px;
+    width: 362px;
+}
+
+.team-name {
+    padding: 0px 0px 0px 5px;
+    width: 406px;
+}
+
+.position {
+    padding: 0px 0px 0px 5px;
+    width: 370px;
+}
+
+.feet {
+    padding: 0px 0px 0px 5px;
+    width: 326px;
+}
+
+.inches {
+    padding: 0px 0px 0px 5px;
+    width: 309px;
+}
+
+.weight {
+    padding: 0px 0px 0px 5px;
+    width: 388px;
+}
+
