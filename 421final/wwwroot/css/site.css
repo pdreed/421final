@@ -45,8 +45,9 @@ body {
     
 }
 
-#header{
-    font-weight:bold;
+#header {
+    font-weight: bold;
+    padding: 0px 300px 0px 0px;
 }
 
 .fixed-container {
@@ -54,9 +55,13 @@ body {
     flex-direction: row;
     font-family: 'DejaVu Sans Mono', monospace;
     justify-content: center;
+    padding: 0px 0px 0px 250px;
 
 }
 
+.year-title {
+    padding: 0px 0px 0px 0px;
+}
 .year-1 {
     width: 406px;
     padding: 0px 0px 0px 5px;
@@ -74,7 +79,7 @@ body {
 
 
 .first-name {
-    padding: 0px 0px 0px 25px;
+    padding: 0px 0px 0px 5px;
     width: 353px;
 }
 .last-name {
@@ -106,4 +111,44 @@ body {
     padding: 0px 0px 0px 5px;
     width: 388px;
 }
+
+
+
+.table-container {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+    padding: 0px 120px 0px 0px;
+}
+.stats-table {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+    text-align: center;
+    padding: 0px 10px 0px 100px;
+}
+
+
+
+
+
+.box {
+    width: 50px;
+    border: .5px inset black;
+    
+}
+
+#tr {
+    background-color: #252638;
+    color: whitesmoke;
+}
+
+.big-box {
+    width: 600px;
+    border: .5px inset black;
+}
+
+
 

@@ -24,9 +24,10 @@
     </table>
 </div>
 
-
-<div class= "results-section" id="header">
-    @Html.DisplayFor(model => model.playerListHeader)
+<div class = "fixed-container">
+    <div class= "results-section" id="header">
+        @Html.DisplayFor(model => model.playerListHeader)
+    </div>
 </div>
 <div class="fixed-container" >
     <div class = "year-title">
@@ -191,202 +192,197 @@
              @Html.DisplayFor(modelItem => item.WeightPounds)
          }
     </div>
-
-</div>
-<div class= "results-section" id="header">
-    Stats
 </div>
 
 
+<div class = "fixed-container">
+    <div class= "results-section" id="header">
+        Stats
+    </div>
+</div>
+
+<div class = "table-container">
+    <div class = "stats-table" id="description">
+       <div class = "big-box" id="tr">
+            @Html.DisplayFor(model => model.year1)
+        </div>
+    </div>
+
+    <div class = "stats-table" id="description">
+       <div class = "big-box" id="tr">
+            @Html.DisplayFor(model => model.year2)
+        </div>
+    </div>
+
+</div>
+
+<div class = "table-container">
+    <div class = "stats-table" id="description">
+        <div class = "box" id="tr">
+            GP
+        </div>
+        <div class = "box" id="tr">
+           MIN
+        </div>
+        <div class = "box" id="tr">
+            FG%
+        </div>
+        <div class = "box" id="tr">
+            3PT%
+        </div>
+        <div class = "box" id="tr">
+            FT%
+        </div>
+        <div class = "box" id="tr">
+            PTS
+        </div>
+        <div class = "box" id="tr">
+            AST
+        </div>
+        <div class = "box" id="tr">
+            REB
+        </div>
+        <div class = "box" id="tr">
+            STL
+        </div>
+        <div class = "box" id="tr">
+            BLK
+        </div>
+        <div class = "box" id="tr">
+            TO
+        </div>
+        <div class = "box" id="tr">
+            PF
+        </div>
+    </div>
+
+    
+
+    <div class = "stats-table" id="description">
+        <div class = "box" id="tr">
+            GP
+        </div>
+        <div class = "box" id="tr">
+           MIN
+        </div>
+        <div class = "box" id="tr">
+            FG%
+        </div>
+        <div class = "box" id="tr">
+            3PT%
+        </div>
+        <div class = "box" id="tr">
+            FT%
+        </div>
+        <div class = "box" id="tr">
+            PTS
+        </div>
+        <div class = "box" id="tr">
+            AST
+        </div>
+        <div class = "box" id="tr">
+            REB
+        </div>
+        <div class = "box" id="tr">
+            STL
+        </div>
+        <div class = "box" id="tr">
+            BLK
+        </div>
+        <div class = "box" id="tr">
+            TO
+        </div>
+        <div class = "box" id="tr">
+            PF
+        </div>
+    </div>
+</div>
+
+<div class = "table-container">
+    <div class = "stats-table" id="description">
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.GamesPlayed)
+        </div>
+        <div class = "box">
+           @Html.DisplayFor(modelItem => Model.player1Stats.Min)
+        </div>
+        <div class = "box">
+             @Html.DisplayFor(modelItem => Model.fgpct1)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.fg3pct1)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.ftpct1)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.Pts)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.Ast)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.Reb)
+        </div>
+        <div class = "box">
+           @Html.DisplayFor(modelItem => Model.player1Stats.Stl)
+        </div>
+        <div class = "box">
+             @Html.DisplayFor(modelItem => Model.player1Stats.Blk)
+        </div>
+        <div class = "box">
+           @Html.DisplayFor(modelItem => Model.player1Stats.Turnover)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
+        </div>
+    </div>
+
+    
+
+    <div class = "stats-table" id="description">
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.GamesPlayed)
+        </div>
+        <div class = "box">
+           @Html.DisplayFor(modelItem => Model.player1Stats.Min)
+        </div>
+        <div class = "box">
+             @Html.DisplayFor(modelItem => Model.fgpct1)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.fg3pct1)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.ftpct1)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.Pts)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.Ast)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.Reb)
+        </div>
+        <div class = "box">
+           @Html.DisplayFor(modelItem => Model.player1Stats.Stl)
+        </div>
+        <div class = "box">
+             @Html.DisplayFor(modelItem => Model.player1Stats.Blk)
+        </div>
+        <div class = "box">
+           @Html.DisplayFor(modelItem => Model.player1Stats.Turnover)
+        </div>
+        <div class = "box">
+            @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
+        </div>
+    </div>
+</div>
 
 
-<table id="main-table" class ="main-table">
-    <tbody>
-        
-          
-        
-        
-       
-                <table id="player1-stats-table" class="player1-stats-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                GP
-                            </th>
-                            <th>
-                                MIN
-                            </th>
-                            <th>
-                                FG%
-                            </th>
-                            <th>
-                                3PT%
-                            </th>
-                            <th>
-                                FT%
-                            </th>
-                            <th>
-                                PTS
-                            </th>
-                            <th>
-                                AST
-                            </th>
-                            <th>
-                                REB
-                            </th>
-                            <th>
-                                STL
-                            </th>
-                            <th>
-                                BLK
-                            </th>
-                            <th>
-                                TO
-                            </th>
-                            <th>
-                                PF
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.GamesPlayed)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.Min)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.fgpct1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.fg3pct1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.ftpct1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.Pts)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.Ast)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.Reb)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.Stl)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.Blk)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.Turnover)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-            <td>
-                <table id="player2-stats-table" class="player2-stats-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                GP
-                            </th>
-                            <th>
-                                MIN
-                            </th>
-                            <th>
-                                FG%
-                            </th>
-                            <th>
-                                3PT%
-                            </th>
-                            <th>
-                                FT%
-                            </th>
-                            <th>
-                                PTS
-                            </th>
-                            <th>
-                                AST
-                            </th>
-                            <th>
-                                REB
-                            </th>
-                            <th>
-                                STL
-                            </th>
-                            <th>
-                                BLK
-                            </th>
-                            <th>
-                                TO
-                            </th>
-                            <th>
-                                PF
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
 
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.GamesPlayed)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.Min)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.fgpct2)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.fg3pct2)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.ftpct2)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.Pts)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.Ast)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.Reb)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.Stl)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.Blk)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.Turnover)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.player2Stats.Pf)
-                            </td>
-                        </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => Model.errorMsg1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => Model.errorMsg2)
-            </td>
-        </tr>
-    </tbody>
-</table>
+
 
 
 
