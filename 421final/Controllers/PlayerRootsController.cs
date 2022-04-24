@@ -11,6 +11,7 @@ using _421final.Models;
 using System.Net;
 using System.Text.Json;
 using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _421final.Views
 {
@@ -112,6 +113,7 @@ namespace _421final.Views
             return View(vm);
         }
 
+        [Authorize(Roles = SD.Admin)]
         // GET: PlayerRoots/Create
         public async Task<IActionResult> Create()
         {
@@ -192,6 +194,7 @@ namespace _421final.Views
             return View(playerRoot);
         }
 
+        [Authorize(Roles = SD.Admin)]
         // GET: PlayerRoots/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -250,6 +253,7 @@ namespace _421final.Views
             return View(playerRoot);
         }
 
+        [Authorize(Roles = SD.Admin)]
         // GET: PlayerRoots/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

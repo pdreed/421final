@@ -1,4 +1,5 @@
-﻿@model _421final.Models.PlayerRootIndexVM
+﻿@using _421final.Data
+@model _421final.Models.PlayerRootIndexVM
 
 @{
     Layout = "_PlayerRootLayout";
@@ -7,7 +8,10 @@
 <h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">Every Player Since 1979</h1>
 
 <p style="text-align: center;">
-    <a asp-action="Create" class="create-button m-5" style="font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">Add New</a>
+    @if (User.IsInRole(SD.Admin))
+    {
+        <a asp-action="Create" class="create-button m-5" style="font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">Add New</a>
+    }
 </p>
 <table id="allPlayers" class="hover m-5" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
     <thead>
@@ -61,11 +65,20 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.WeightPounds)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+                @if (User.IsInRole(SD.Admin))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+                else 
+                {
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                }
             </tr>
         }
     </tbody>
