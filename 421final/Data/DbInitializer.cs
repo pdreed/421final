@@ -37,13 +37,13 @@ namespace _421final.Data
 
             _userManager.CreateAsync(new IdentityUser
             {
-                UserName = "admin@gmail.com",
-                Email = "admin@gmail.com",
+                UserName = "admin@balldontlie.com",
+                Email = "admin@balldontlie.com",
                 EmailConfirmed = true
 
             }, "Admin123*").GetAwaiter().GetResult();
 
-            IdentityUser user = _db.Users.Where(u => u.Email == "admin@gmail.com").FirstOrDefault();
+            IdentityUser user = _db.Users.Where(u => u.Email == "admin@balldontlie.com").FirstOrDefault();
             _userManager.AddToRoleAsync(user, SD.Admin).GetAwaiter().GetResult();
 
         }
