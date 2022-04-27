@@ -1,0 +1,39 @@
+﻿@page
+@model RegisterModel
+
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">Register</h1>
+
+<div class="row" style="margin-bottom: 90px;">
+    <div class="col-md-4 m-3" style="font-family: DejaVu Sans Mono, monospace;">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 40px; font-variant: small-caps;">Create your Account</h2>
+
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary" style="background-color: #252638;border: none;color: white; border-radius: 5px;
+                  padding: 16px 32px;
+                  text-decoration: none;
+                  margin: 4px 2px;
+                  cursor: pointer;">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

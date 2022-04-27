@@ -1,0 +1,41 @@
+﻿@using _421final.Data
+@model List<_421final.Models.ManageUserRolesVM>
+
+@{
+    Layout = "_UserRolesLayout";
+}
+
+<form method="post">
+    <div class="card">
+        <div class="card-header">
+            <h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">Manage User Roles</h1>
+            <h4 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 26px; font-variant: small-caps;">Add/Remove Roles for User / @ViewBag.UserName.</h4>
+        </div>
+        <div class="card-body" style="font-family: DejaVu Sans Mono, monospace;">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="form-check m-1">
+                    <input type="hidden" asp-for="@Model[i].RoleId" />
+                    <input type="hidden" asp-for="@Model[i].RoleName" />
+                    <input asp-for="@Model[i].Selected" class="form-check-input" />
+                    <label class="form-check-label" asp-for="@Model[i].Selected">
+                        @Model[i].RoleName
+                    </label>
+                </div>
+            }
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="Update" class="btn btn-primary" style="background-color: #252638;border: none;color: white; border-radius: 5px;
+                  padding: 16px 32px;
+                  text-decoration: none;
+                  margin: 4px 2px;
+                  cursor: pointer; width:auto;" />
+            <a asp-action="Index" class="btn btn-primary" style="background-color: #252638;border: none;color: white; border-radius: 5px;
+                  padding: 16px 32px;
+                  text-decoration: none;
+                  margin: 4px 2px;
+                  cursor: pointer; width:auto;" >Cancel</a>
+        </div>
+    </div>
+</form>
