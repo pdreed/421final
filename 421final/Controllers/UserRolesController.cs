@@ -19,6 +19,8 @@ namespace _421final.Views
             _roleManager = roleManager;
             _userManager = userManager;
         }
+
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -38,6 +40,7 @@ namespace _421final.Views
             return new List<string>(await _userManager.GetRolesAsync(user));
         }
 
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> Manage(string userId)
         {
             ViewBag.userId = userId;
