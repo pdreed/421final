@@ -55,8 +55,45 @@ body {
     flex-direction: row;
     font-family: 'DejaVu Sans Mono', monospace;
     justify-content: center;
-    padding: 0px 0px 0px 250px;
+    padding: 0px 75px 0px 250px;
 
+}
+#tab-holder {
+    padding: 0px 260px 0px 260px;
+}
+#tab-holder1 {
+    padding: 0px 00px 0px 0px;
+}
+
+.bio-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 0px 0px;
+}
+
+
+.bio-container2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.bio-header-box {
+    width: 137px;
+    
+    border: .5px inset black;
+    text-align: center;
+    background-color: #252638;
+    color: whitesmoke;
+   
+}
+
+#content {
+    width: 313px;
+    min-height: 28px;
+    border: .5px inset black;
+    text-align: center;
+    background-color: white;
+    color: black;
 }
 
 .year-title {
@@ -127,7 +164,7 @@ body {
     font-family: 'DejaVu Sans Mono', monospace;
     justify-content: center;
     text-align: center;
-    padding: 0px 10px 0px 100px;
+    padding: 0px 50px 0px 40px;
 }
 
 

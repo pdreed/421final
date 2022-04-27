@@ -29,170 +29,153 @@
         @Html.DisplayFor(model => model.playerListHeader)
     </div>
 </div>
-<div class="fixed-container" >
-    <div class = "year-title">
-       Year: 
-    </div>
-    <div class = "year-1">
-      @Html.DisplayFor(model => model.year1)
-    </div>
-    <div class = "year-title">
-       Year: 
-    </div>
-     <div class = "year-1">
-        @Html.DisplayFor(model => model.year2)
-    </div>    
-</div>
+
 
 <div class = "fixed-container">
-    
-    <div class = "name-title">
-        First Name:
-    </div>
-    <div class = "first-name">
-        @foreach (var item in Model.playerList1)
-         {
-             @Html.DisplayFor(modelItem => item.FirstName)
-          }
+    <div class = "fixed-container" id = "tab-holder1">
+        <div class = "bio-container">
+            <div class = "bio-header-box">
+                First Name
+            </div>
+            <div class = "bio-header-box">
+                Last Name
+            </div>
+            <div class = "bio-header-box">
+                Team
+            </div>
+            <div class = "bio-header-box">
+                Position
+            </div>
+            <div class = "bio-header-box">
+                Height (Feet)
+            </div>
+            <div class = "bio-header-box">
+                Height (Inches)
+            </div>
+            <div class = "bio-header-box">
+                Weight (LBS)
+            </div>
+        </div>
+        <div class = "bio-container">
+            <div class = "bio-header-box" id="content">
+                 @foreach (var item in Model.playerList1)
+             {
+                 @Html.DisplayFor(modelItem => item.FirstName)
+              }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList1)
+             {
+                 @Html.DisplayFor(modelItem => item.LastName)
+              }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList1)
+             {
+                 @Html.DisplayFor(modelItem => item.Team.FullName)
+              }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList1)
+             {
+             
+                 @Html.DisplayFor(modelItem => item.Position)
+             }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList1)
+             {
+                 @Html.DisplayFor(modelItem => item.HeightFeet)
+             }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList1)
+             {
+                 @Html.DisplayFor(modelItem => item.HeightInches)
+             }
+            </div>
+            <div class = "bio-header-box" id="content">
+                   @foreach (var item in Model.playerList1)
+             {
+                 @Html.DisplayFor(modelItem => item.WeightPounds)
+             }
+            </div>
+        </div>
     </div>
 
-     <div class = "name-title">
-        First Name:
-    </div>
-    <div class = "first-name">
-        @foreach (var item in Model.playerList2)
-         {
-             @Html.DisplayFor(modelItem => item.FirstName)
-          }
+     <div class = "fixed-container" id = "tab-holder">
+        <div class = "bio-container2">
+            <div class = "bio-header-box">
+                First Name
+            </div>
+            <div class = "bio-header-box">
+                Last Name
+            </div>
+            <div class = "bio-header-box">
+                Team
+            </div>
+            <div class = "bio-header-box">
+                Position
+            </div>
+            <div class = "bio-header-box">
+                Height (Feet)
+            </div>
+            <div class = "bio-header-box">
+                Height (Inches)
+            </div>
+            <div class = "bio-header-box">
+                Weight (LBS)
+            </div>
+        </div>
+        <div class = "bio-container2">
+            <div class = "bio-header-box" id="content">
+                 @foreach (var item in Model.playerList2)
+             {
+                 @Html.DisplayFor(modelItem => item.FirstName)
+              }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList2)
+             {
+                 @Html.DisplayFor(modelItem => item.LastName)
+              }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList2)
+             {
+                 @Html.DisplayFor(modelItem => item.Team.FullName)
+              }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList2)
+             {
+             
+                 @Html.DisplayFor(modelItem => item.Position)
+             }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList2)
+             {
+                 @Html.DisplayFor(modelItem => item.HeightFeet)
+             }
+            </div>
+            <div class = "bio-header-box" id="content">
+                @foreach (var item in Model.playerList2)
+             {
+                 @Html.DisplayFor(modelItem => item.HeightInches)
+             }
+            </div>
+            <div class = "bio-header-box" id="content">
+                   @foreach (var item in Model.playerList2)
+             {
+                 @Html.DisplayFor(modelItem => item.WeightPounds)
+             }
+            </div>
+        </div>
     </div>
 </div>
 
-<div class = "fixed-container">
-    <div class = "name-title">
-        Last Name:
-    </div>
-         <div class = "last-name">
-        @foreach (var item in Model.playerList1)
-         {
-             @Html.DisplayFor(modelItem => item.LastName)
-          }
-    </div>
-      <div class = "name-title">
-        Last Name:
-    </div>
-         <div class = "last-name">
-        @foreach (var item in Model.playerList2)
-         {
-             @Html.DisplayFor(modelItem => item.LastName)
-          }
-    </div>
-</div>
 
-<div class = "fixed-container">
-    <div class="team">
-        Team:
-    </div>
-     <div class = "team-name">
-        @foreach (var item in Model.playerList1)
-         {
-             @Html.DisplayFor(modelItem => item.Team.FullName)
-         }
-    </div>
-    <div class="team">
-        Team:
-    </div>
-     <div class = "team-name">
-        @foreach (var item in Model.playerList2)
-         {
-             @Html.DisplayFor(modelItem => item.Team.FullName)
-         }
-    </div>
-</div>
-
-<div class = "fixed-container">
-    <div class = "pos">
-        Position:
-    </div>
-    <div class = "position">
-        @foreach (var item in Model.playerList1)
-         {
-             @Html.DisplayFor(modelItem => item.Position)
-         }
-    </div>
-       <div class = "pos">
-        Position:
-    </div>
-    <div class = "position">
-        @foreach (var item in Model.playerList2)
-         {
-             @Html.DisplayFor(modelItem => item.Position)
-         }
-    </div>
-
-</div>
-
-<div class = "fixed-container">
-    <div class = "hft">
-        Height (Feet):
-    </div>
-    <div class = "feet">
-        @foreach (var item in Model.playerList1)
-         {
-             @Html.DisplayFor(modelItem => item.HeightFeet)
-         }
-    </div>
-    <div class = "hft">
-        Height (Feet):
-    </div>
-    <div class = "feet">
-        @foreach (var item in Model.playerList2)
-         {
-             @Html.DisplayFor(modelItem => item.HeightFeet)
-         }
-    </div>
-</div>
-
-<div class = "fixed-container">
-    <div class = "hin">
-        Height (Inches):
-    </div>
-    <div class = "inches">
-        @foreach (var item in Model.playerList1)
-         {
-             @Html.DisplayFor(modelItem => item.HeightInches)
-         }
-    </div>
-    <div class = "hin">
-        Height (Inches):
-    </div>
-    <div class = "inches">
-        @foreach (var item in Model.playerList2)
-         {
-             @Html.DisplayFor(modelItem => item.HeightInches)
-         }
-    </div>
-</div>
-
-<div class="fixed-container">
-    <div class = "w">
-        Weight:
-    </div>
-     <div class = "weight">
-        @foreach (var item in Model.playerList1)
-         {
-             @Html.DisplayFor(modelItem => item.WeightPounds)
-         }
-    </div>
-    <div class = "w">
-        Weight:
-    </div>
-     <div class = "weight">
-        @foreach (var item in Model.playerList2)
-         {
-             @Html.DisplayFor(modelItem => item.WeightPounds)
-         }
-    </div>
-</div>
 
 
 <div class = "fixed-container">
