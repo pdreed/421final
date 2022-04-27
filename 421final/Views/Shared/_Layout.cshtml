@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using _421final.Data
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -119,7 +120,10 @@
                                         <li><a asp-area="" asp-controller="PlayerRoots" asp-action="Index">Players</a></li> 
                                         <li><a asp-area="" asp-controller="TeamRoots" asp-action="Index">Teams</a></li>
                                         <li><a asp-area="" asp-controller="ComparisonPage" asp-action="Index">Stat Comparisons</a></li> 
-                                        
+                                        @if (User.IsInRole(SD.Admin))
+                                        {
+                                            <li><a asp-area="" asp-controller="UserRoles" asp-action="Index">Manage Users</a></li> 
+                                        }
                                     </ul>
                                 </div>
                             </nav>
