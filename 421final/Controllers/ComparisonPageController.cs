@@ -1,5 +1,6 @@
 ﻿using _421final.Data;
 using _421final.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
@@ -15,6 +16,8 @@ namespace _421final.Views
         {
             _context = context;
         }
+
+        [Authorize(Roles = SD.User + "," + SD.Admin)]
         public async Task<IActionResult> Index()
         {
             ComparisonPage vm = new ComparisonPage();

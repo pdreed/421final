@@ -1,0 +1,39 @@
+﻿@using _421final.Data
+@model List<_421final.Models.UserRolesVM>
+
+@{
+    Layout = "_UserRolesLayout";
+}
+
+<h1 style="text-align: center; font-family: DejaVu Sans Mono, monospace; font-size: 46px; font-variant: small-caps; margin-top: 18px; margin-bottom: -8px;">User Roles</h1>
+<table class="table table-striped" id="allUsers" style="width:95%; font-family: DejaVu Sans Mono, monospace;">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+        <tr>
+            <td>@user.Email</td>
+            <td>@string.Join(" , ", user.Roles.ToList())</td>
+            <td align="center">
+                <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId" style="background-color: #252638;border: none;color: white; border-radius: 5px;
+                  padding: 16px 32px;
+                  text-decoration: none;
+                  margin: 4px 2px;
+                  cursor: pointer;">Manage Roles</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+$(document).ready( function () {
+    $('#allUsers').DataTable();
+} );
+</script>

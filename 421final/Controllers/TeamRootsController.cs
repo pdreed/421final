@@ -10,6 +10,7 @@ using _421final.Data;
 using _421final.Models;
 using System.Net;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _421final.Views
 {
@@ -46,6 +47,7 @@ namespace _421final.Views
             return View(teamRoot);
         }
 
+        [Authorize(Roles = SD.Admin)]
         // GET: TeamRoots/Create
         public async Task<IActionResult> Create()
         {
@@ -106,6 +108,7 @@ namespace _421final.Views
             return View(teamRoot);
         }
 
+        [Authorize(Roles = SD.Admin)]
         // GET: TeamRoots/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -157,6 +160,7 @@ namespace _421final.Views
             return View(teamRoot);
         }
 
+        [Authorize(Roles = SD.Admin)]
         // GET: TeamRoots/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

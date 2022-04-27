@@ -1,367 +1,373 @@
-﻿@model _421final.Models.ComparisonPage
+﻿@using _421final.Data
+@model _421final.Models.ComparisonPage
 
 @{
     Layout = "_ComparisonLayout";
 }
 
-<div class="search-container" >
-    <table id="search-bar-table" >
-        <tr>
-            <td >
-                @using(Html.BeginForm())
-                {
-                    <input type="text" name="textBoxValue" id= "actual-search-bar" />
-                    <input type="submit" value="Submit" />
-                }
-                <p id="p-superScript">
-                     Please use the following format to compare two players: {First Last Year, First Last Year}
-                </p>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => Model.searchErrorMsg)
-            </td>
-        </tr>
-    </table>
-</div>
 
-<div class = "fixed-container">
-    <div class= "results-section" id="header">
-        @Html.DisplayFor(model => model.playerListHeader)
+
+@if (User.IsInRole(SD.User) || User.IsInRole(SD.Admin))
+{
+    <div class="search-container" >
+        <table id="search-bar-table" >
+            <tr>
+                <td >
+                    @using (Html.BeginForm())
+                    {
+                        <input type="text" name="textBoxValue" id= "actual-search-bar" />
+                        <input type="submit" value="Submit" />
+                    }
+                    <p id="p-superScript">
+                        Please use the following format to compare two players: {First Last Year, First Last Year}
+                    </p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.searchErrorMsg)
+                </td>
+            </tr>
+        </table>
     </div>
-</div>
 
-
-<div class = "fixed-container">
-    <div class = "fixed-container" id = "tab-holder1">
-        <div class = "bio-container">
-            <div class = "bio-header-box">
-                First Name
-            </div>
-            <div class = "bio-header-box">
-                Last Name
-            </div>
-            <div class = "bio-header-box">
-                Team
-            </div>
-            <div class = "bio-header-box">
-                Position
-            </div>
-            <div class = "bio-header-box">
-                Height (Feet)
-            </div>
-            <div class = "bio-header-box">
-                Height (Inches)
-            </div>
-            <div class = "bio-header-box">
-                Weight (LBS)
-            </div>
-        </div>
-        <div class = "bio-container">
-            <div class = "bio-header-box" id="content">
-                 @foreach (var item in Model.playerList1)
-             {
-                 @Html.DisplayFor(modelItem => item.FirstName)
-              }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList1)
-             {
-                 @Html.DisplayFor(modelItem => item.LastName)
-              }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList1)
-             {
-                 @Html.DisplayFor(modelItem => item.Team.FullName)
-              }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList1)
-             {
-             
-                 @Html.DisplayFor(modelItem => item.Position)
-             }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList1)
-             {
-                 @Html.DisplayFor(modelItem => item.HeightFeet)
-             }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList1)
-             {
-                 @Html.DisplayFor(modelItem => item.HeightInches)
-             }
-            </div>
-            <div class = "bio-header-box" id="content">
-                   @foreach (var item in Model.playerList1)
-             {
-                 @Html.DisplayFor(modelItem => item.WeightPounds)
-             }
-            </div>
+    <div class = "fixed-container">
+        <div class= "results-section" id="header">
+            @Html.DisplayFor(model => model.playerListHeader)
         </div>
     </div>
 
-     <div class = "fixed-container" id = "tab-holder">
-        <div class = "bio-container2">
-            <div class = "bio-header-box">
-                First Name
+
+    <div class = "fixed-container">
+        <div class = "fixed-container" id = "tab-holder1">
+            <div class = "bio-container">
+                <div class = "bio-header-box">
+                    First Name
+                </div>
+                <div class = "bio-header-box">
+                    Last Name
+                </div>
+                <div class = "bio-header-box">
+                    Team
+                </div>
+                <div class = "bio-header-box">
+                    Position
+                </div>
+                <div class = "bio-header-box">
+                    Height (Feet)
+                </div>
+                <div class = "bio-header-box">
+                    Height (Inches)
+                </div>
+                <div class = "bio-header-box">
+                    Weight (LBS)
+                </div>
             </div>
-            <div class = "bio-header-box">
-                Last Name
-            </div>
-            <div class = "bio-header-box">
-                Team
-            </div>
-            <div class = "bio-header-box">
-                Position
-            </div>
-            <div class = "bio-header-box">
-                Height (Feet)
-            </div>
-            <div class = "bio-header-box">
-                Height (Inches)
-            </div>
-            <div class = "bio-header-box">
-                Weight (LBS)
+            <div class = "bio-container">
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList1)
+                    {
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList1)
+                    {
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList1)
+                    {
+                        @Html.DisplayFor(modelItem => item.Team.FullName)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList1)
+                    {
+
+                        @Html.DisplayFor(modelItem => item.Position)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList1)
+                    {
+                        @Html.DisplayFor(modelItem => item.HeightFeet)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList1)
+                    {
+                        @Html.DisplayFor(modelItem => item.HeightInches)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList1)
+                    {
+                        @Html.DisplayFor(modelItem => item.WeightPounds)
+                    }
+                </div>
             </div>
         </div>
-        <div class = "bio-container2">
-            <div class = "bio-header-box" id="content">
-                 @foreach (var item in Model.playerList2)
-             {
-                 @Html.DisplayFor(modelItem => item.FirstName)
-              }
+
+        <div class = "fixed-container" id = "tab-holder">
+            <div class = "bio-container2">
+                <div class = "bio-header-box">
+                    First Name
+                </div>
+                <div class = "bio-header-box">
+                    Last Name
+                </div>
+                <div class = "bio-header-box">
+                    Team
+                </div>
+                <div class = "bio-header-box">
+                    Position
+                </div>
+                <div class = "bio-header-box">
+                    Height (Feet)
+                </div>
+                <div class = "bio-header-box">
+                    Height (Inches)
+                </div>
+                <div class = "bio-header-box">
+                    Weight (LBS)
+                </div>
             </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList2)
-             {
-                 @Html.DisplayFor(modelItem => item.LastName)
-              }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList2)
-             {
-                 @Html.DisplayFor(modelItem => item.Team.FullName)
-              }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList2)
-             {
-             
-                 @Html.DisplayFor(modelItem => item.Position)
-             }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList2)
-             {
-                 @Html.DisplayFor(modelItem => item.HeightFeet)
-             }
-            </div>
-            <div class = "bio-header-box" id="content">
-                @foreach (var item in Model.playerList2)
-             {
-                 @Html.DisplayFor(modelItem => item.HeightInches)
-             }
-            </div>
-            <div class = "bio-header-box" id="content">
-                   @foreach (var item in Model.playerList2)
-             {
-                 @Html.DisplayFor(modelItem => item.WeightPounds)
-             }
+            <div class = "bio-container2">
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList2)
+                    {
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList2)
+                    {
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList2)
+                    {
+                        @Html.DisplayFor(modelItem => item.Team.FullName)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList2)
+                    {
+
+                        @Html.DisplayFor(modelItem => item.Position)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList2)
+                    {
+                        @Html.DisplayFor(modelItem => item.HeightFeet)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList2)
+                    {
+                        @Html.DisplayFor(modelItem => item.HeightInches)
+                    }
+                </div>
+                <div class = "bio-header-box" id="content">
+                    @foreach (var item in Model.playerList2)
+                    {
+                        @Html.DisplayFor(modelItem => item.WeightPounds)
+                    }
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
 
-<div class = "fixed-container">
-    <div class= "results-section" id="header">
-        Stats
-    </div>
-</div>
-
-<div class = "table-container">
-    <div class = "stats-table" id="description">
-       <div class = "big-box" id="tr">
-            @Html.DisplayFor(model => model.year1)
+    <div class = "fixed-container">
+        <div class= "results-section" id="header">
+            Stats
         </div>
     </div>
 
-    <div class = "stats-table" id="description">
-       <div class = "big-box" id="tr">
-            @Html.DisplayFor(model => model.year2)
+    <div class = "table-container">
+        <div class = "stats-table" id="description">
+            <div class = "big-box" id="tr">
+                @Html.DisplayFor(model => model.year1)
+            </div>
+        </div>
+
+        <div class = "stats-table" id="description">
+            <div class = "big-box" id="tr">
+                @Html.DisplayFor(model => model.year2)
+            </div>
+        </div>
+
+    </div>
+
+    <div class = "table-container">
+        <div class = "stats-table" id="description">
+            <div class = "box" id="tr">
+                GP
+            </div>
+            <div class = "box" id="tr">
+                MIN
+            </div>
+            <div class = "box" id="tr">
+                FG%
+            </div>
+            <div class = "box" id="tr">
+                3PT%
+            </div>
+            <div class = "box" id="tr">
+                FT%
+            </div>
+            <div class = "box" id="tr">
+                PTS
+            </div>
+            <div class = "box" id="tr">
+                AST
+            </div>
+            <div class = "box" id="tr">
+                REB
+            </div>
+            <div class = "box" id="tr">
+                STL
+            </div>
+            <div class = "box" id="tr">
+                BLK
+            </div>
+            <div class = "box" id="tr">
+                TO
+            </div>
+            <div class = "box" id="tr">
+                PF
+            </div>
+        </div>
+
+
+
+        <div class = "stats-table" id="description">
+            <div class = "box" id="tr">
+                GP
+            </div>
+            <div class = "box" id="tr">
+                MIN
+            </div>
+            <div class = "box" id="tr">
+                FG%
+            </div>
+            <div class = "box" id="tr">
+                3PT%
+            </div>
+            <div class = "box" id="tr">
+                FT%
+            </div>
+            <div class = "box" id="tr">
+                PTS
+            </div>
+            <div class = "box" id="tr">
+                AST
+            </div>
+            <div class = "box" id="tr">
+                REB
+            </div>
+            <div class = "box" id="tr">
+                STL
+            </div>
+            <div class = "box" id="tr">
+                BLK
+            </div>
+            <div class = "box" id="tr">
+                TO
+            </div>
+            <div class = "box" id="tr">
+                PF
+            </div>
         </div>
     </div>
 
-</div>
+    <div class = "table-container">
+        <div class = "stats-table" id="description">
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.GamesPlayed)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Min)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.fgpct1)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.fg3pct1)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.ftpct1)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Pts)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Ast)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Reb)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Stl)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Blk)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Turnover)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
+            </div>
+        </div>
 
-<div class = "table-container">
-    <div class = "stats-table" id="description">
-        <div class = "box" id="tr">
-            GP
-        </div>
-        <div class = "box" id="tr">
-           MIN
-        </div>
-        <div class = "box" id="tr">
-            FG%
-        </div>
-        <div class = "box" id="tr">
-            3PT%
-        </div>
-        <div class = "box" id="tr">
-            FT%
-        </div>
-        <div class = "box" id="tr">
-            PTS
-        </div>
-        <div class = "box" id="tr">
-            AST
-        </div>
-        <div class = "box" id="tr">
-            REB
-        </div>
-        <div class = "box" id="tr">
-            STL
-        </div>
-        <div class = "box" id="tr">
-            BLK
-        </div>
-        <div class = "box" id="tr">
-            TO
-        </div>
-        <div class = "box" id="tr">
-            PF
+
+
+        <div class = "stats-table" id="description">
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.GamesPlayed)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Min)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.fgpct1)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.fg3pct1)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.ftpct1)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Pts)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Ast)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Reb)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Stl)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Blk)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Turnover)
+            </div>
+            <div class = "box">
+                @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
+            </div>
         </div>
     </div>
-
-    
-
-    <div class = "stats-table" id="description">
-        <div class = "box" id="tr">
-            GP
-        </div>
-        <div class = "box" id="tr">
-           MIN
-        </div>
-        <div class = "box" id="tr">
-            FG%
-        </div>
-        <div class = "box" id="tr">
-            3PT%
-        </div>
-        <div class = "box" id="tr">
-            FT%
-        </div>
-        <div class = "box" id="tr">
-            PTS
-        </div>
-        <div class = "box" id="tr">
-            AST
-        </div>
-        <div class = "box" id="tr">
-            REB
-        </div>
-        <div class = "box" id="tr">
-            STL
-        </div>
-        <div class = "box" id="tr">
-            BLK
-        </div>
-        <div class = "box" id="tr">
-            TO
-        </div>
-        <div class = "box" id="tr">
-            PF
-        </div>
-    </div>
-</div>
-
-<div class = "table-container">
-    <div class = "stats-table" id="description">
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.GamesPlayed)
-        </div>
-        <div class = "box">
-           @Html.DisplayFor(modelItem => Model.player1Stats.Min)
-        </div>
-        <div class = "box">
-             @Html.DisplayFor(modelItem => Model.fgpct1)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.fg3pct1)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.ftpct1)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.Pts)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.Ast)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.Reb)
-        </div>
-        <div class = "box">
-           @Html.DisplayFor(modelItem => Model.player1Stats.Stl)
-        </div>
-        <div class = "box">
-             @Html.DisplayFor(modelItem => Model.player1Stats.Blk)
-        </div>
-        <div class = "box">
-           @Html.DisplayFor(modelItem => Model.player1Stats.Turnover)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
-        </div>
-    </div>
-
-    
-
-    <div class = "stats-table" id="description">
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.GamesPlayed)
-        </div>
-        <div class = "box">
-           @Html.DisplayFor(modelItem => Model.player1Stats.Min)
-        </div>
-        <div class = "box">
-             @Html.DisplayFor(modelItem => Model.fgpct1)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.fg3pct1)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.ftpct1)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.Pts)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.Ast)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.Reb)
-        </div>
-        <div class = "box">
-           @Html.DisplayFor(modelItem => Model.player1Stats.Stl)
-        </div>
-        <div class = "box">
-             @Html.DisplayFor(modelItem => Model.player1Stats.Blk)
-        </div>
-        <div class = "box">
-           @Html.DisplayFor(modelItem => Model.player1Stats.Turnover)
-        </div>
-        <div class = "box">
-            @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
-        </div>
-    </div>
-</div>
+}
 
 
 
