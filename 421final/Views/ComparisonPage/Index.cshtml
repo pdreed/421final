@@ -344,6 +344,9 @@
             <div class = "box">
                 @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
             </div>
+
+             
+                
         </div>
 
 
@@ -386,7 +389,27 @@
                 @Html.DisplayFor(modelItem => Model.player2Stats.Pf)
             </div>
         </div>
+        
     </div>
+
+    <div class = "table-container">
+        <div class = "stats-table" id="description">
+            <div class = "big-box" id="thiser">
+                @Html.DisplayFor(modelItem => Model.errorMsg1)
+            </div>
+        </div>
+
+        <div class = "stats-table" id="description">
+            <div class = "big-box" id="thiser">
+               @Html.DisplayFor(modelItem => Model.errorMsg2)
+            </div>
+        </div>
+
+    </div>
+
+   
+
+
 }
 
 
