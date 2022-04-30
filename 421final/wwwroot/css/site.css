@@ -47,7 +47,8 @@ body {
 
 #header {
     font-weight: bold;
-    padding: 0px 300px 0px 0px;
+    padding: 0px 250px 0px 0px;
+    color: black;
 }
 
 .fixed-container {
@@ -56,6 +57,9 @@ body {
     font-family: 'DejaVu Sans Mono', monospace;
     justify-content: center;
     padding: 0px 75px 0px 250px;
+
+
+
 
 }
 #tab-holder {
@@ -164,7 +168,8 @@ body {
     font-family: 'DejaVu Sans Mono', monospace;
     justify-content: center;
     text-align: center;
-    padding: 0px 50px 0px 40px;
+    padding: 0px 60px 0px 100px;
+    color: black;
 }
 
 
@@ -182,10 +187,43 @@ body {
     color: whitesmoke;
 }
 
+
+
+
+
+#team-box {
+    background-color: #252638;
+    color: whitesmoke;
+    width: 100px;
+}
 .big-box {
     width: 600px;
     border: .5px inset black;
 }
 
+.empty-space{
+    height: 10px;
+}
 
 
+.error{
+    color: red;
+}
+
+
+
+.team-table-container {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+    padding: 0px 120px 0px 0px;
+}
+
+
+.team-table-box {
+    width: 250px;
+    border: .5px inset black;
+    background-color: #252638;
+    color: whitesmoke;
+}

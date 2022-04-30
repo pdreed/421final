@@ -1,0 +1,234 @@
+﻿@using _421final.Data
+@model _421final.Models.ReportsPage
+
+@{
+    Layout = "_ReportsLayout";
+}
+
+
+@if (User.IsInRole(SD.User) || User.IsInRole(SD.Admin))
+{
+  
+    
+   <div class = "fixed-container" id="top-block">
+       <div class="word-block" >
+           Press Button to See Teams With More Than One Championship
+       </div>   
+       <button id="button-format" onclick= "getChampionships()">Submit</button>
+    </div>
+    
+    <div class ="empty-space"></div>
+
+    <div class = "fixed-container" id="top-block">
+       <div class="word-block">
+           Press Button to See Teams No Championships
+       </div>   
+       <button id="button-format" onclick= "getNoChampionships()">Submit</button>
+    </div>
+
+    <div class ="empty-space"></div>
+
+    <div class = "fixed-container" id="top-block">
+       <div class="word-block" >
+           Press Button to See Active Players over 7 feet
+       </div>   
+       <button id="button-format" onclick= "getTallGuys()">Submit</button>
+    </div>
+
+    <div class ="empty-space"></div>
+
+      <div class = "fixed-container" id="top-block">
+       <div class="word-block" >
+           Press Button to See Active Players Under 200 Pounds
+       </div>   
+       <button id="button-format" onclick= " getLightGuys()">Submit</button>
+    </div>
+
+
+
+    <div class ="empty-space"></div>
+
+
+
+
+    <div class = "fixed-container" id ="one" hidden value = "true">
+        <div class="results-section" id="header">
+             Teams With a Championship
+             </div>
+    </div>
+
+    <div class ="empty-space"></div>
+
+     <div class = "team-table-container"  id ="two" hidden>
+        <div class = "stats-table" >
+            <div class = "team-table-box" >
+                Team
+            </div>
+            <div class = "team-table-box">
+               Championships Won
+            </div>
+        </div>
+    </div>
+
+  
+
+    <div class= "fixed-container" id = "three" hidden >
+        <div class = "table-container"  >
+            @foreach (var item in Model.ChampionList.OrderByDescending(x => x.Championships))
+            {
+                <table>
+                    
+                    <tr>
+                        <td class = "tblrow">
+                            @item.FullName      
+                        </td>
+                        <td class = "tblrow">
+                            @item.Championships
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+
+    <div class ="empty-space"></div>
+    
+   <div class = "fixed-container" id ="four" hidden>
+        <div class= "results-section" id="header">
+            Teams Without a Championship          
+        </div>
+    </div>
+    <div class ="empty-space"></div>
+
+  <div class = "team-table-container"  id ="five" hidden>
+        <div class = "stats-table" >
+            <div class = "team-table-box" >
+                Team
+            </div>
+            <div class = "team-table-box">
+               Championships Won
+            </div>
+        </div>
+    </div>
+    <div class= "fixed-container"  id ="six" hidden>
+        <div class = "table-container">
+            @foreach (var item in Model.NoChampionList.OrderByDescending(x => x.Championships))
+            {
+                <table>
+                    
+                    <tr>
+                        <td class = "tblrow">
+                            @item.FullName      
+                        </td>
+                        <td class = "tblrow">
+                            @item.Championships
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+
+    <div class ="empty-space"></div>
+
+     <div class = "fixed-container" id = "seven" hidden>
+        <div class= "results-section" id="header">
+           Players Over 7 Feet Tall          
+        </div>
+    </div>
+
+    <div class ="empty-space"></div>
+
+     <div class = "team-table-container"  id = "eight" hidden>
+        <div class = "stats-table" >
+            <div class = "team-table-box" >
+                First Name
+            </div>
+            <div class = "team-table-box">
+               Last Name
+            </div>
+            <div class = "team-table-box">
+               Height (Feet)
+            </div>
+            <div class = "team-table-box">
+               Height (Inches)
+            </div>
+        </div>
+    </div>
+
+     <div class= "fixed-container"  id = "nine" hidden>
+        <div class = "table-container">
+            @foreach (var item in Model.HeightList.OrderByDescending (x => x.HeightFeet).ThenByDescending(x=> x.HeightInches))
+            {
+                <table>
+                    
+                    <tr>
+                        <td class = "tblrow">
+                            @item.FirstName  
+                        </td>
+                        <td class = "tblrow">
+                            @item.LastName
+                        </td>
+                        <td class = "tblrow">
+                            @item.HeightFeet
+                        </td>
+                          <td class = "tblrow">
+                            @item.HeightInches
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+    
+    <div class ="empty-space"></div>
+
+       <div class = "fixed-container" id = "ten" hidden>
+        <div class= "results-section" id="header">
+            Players Under 200 Pounds       
+        </div>
+    </div>
+
+    <div class ="empty-space"></div>    
+
+    <div class = "team-table-container" id = "eleven" hidden>
+        <div class = "stats-table" >
+            <div class = "team-table-box" >
+                First Name
+            </div>
+            <div class = "team-table-box">
+               Last Name
+            </div>
+            <div class = "team-table-box">
+               Weight (Lbs)
+            </div>
+        </div>
+    </div>
+
+     <div class= "fixed-container" id = "twelve" hidden>
+        <div class = "table-container">
+            @foreach (var item in Model.WeightList.OrderBy(x => x.WeightPounds))
+            {
+                <table>
+                    
+                    <tr>
+                        <td class = "tblrow">
+                            @item.FirstName  
+                        </td>
+                        <td class = "tblrow">
+                            @item.LastName
+                        </td>
+                        <td class = "tblrow">
+                            @item.WeightPounds
+                        </td>
+                        
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+
+
+   
+    
+}

@@ -22,11 +22,16 @@
                         Please use the following format to compare two players: {First Last Year, First Last Year}
                     </p>
                 </td>
-                <td>
+                <td class= error>
                     @Html.DisplayFor(modelItem => Model.searchErrorMsg)
                 </td>
             </tr>
         </table>
+    </div>
+
+     <div class = "fixed-container">
+        <div class= "empty-space" >   
+        </div>
     </div>
 
     <div class = "fixed-container">
@@ -35,6 +40,11 @@
         </div>
     </div>
 
+
+     <div class = "fixed-container">
+        <div class= "empty-space" >   
+        </div>
+    </div>
 
     <div class = "fixed-container">
         <div class = "fixed-container" id = "tab-holder1">
@@ -58,7 +68,7 @@
                     Height (Inches)
                 </div>
                 <div class = "bio-header-box">
-                    Weight (LBS)
+                    Weight (Lbs)
                 </div>
             </div>
             <div class = "bio-container">
@@ -129,7 +139,7 @@
                     Height (Inches)
                 </div>
                 <div class = "bio-header-box">
-                    Weight (LBS)
+                    Weight (Lbs)
                 </div>
             </div>
             <div class = "bio-container2">
@@ -181,6 +191,10 @@
     </div>
 
 
+      <div class = "fixed-container">
+        <div class= "empty-space" >   
+        </div>
+    </div>
 
 
     <div class = "fixed-container">
@@ -188,6 +202,12 @@
             Stats
         </div>
     </div>
+
+    <div class = "fixed-container">
+        <div class= "empty-space" >   
+        </div>
+    </div>
+
 
     <div class = "table-container">
         <div class = "stats-table" id="description">
@@ -330,40 +350,40 @@
 
         <div class = "stats-table" id="description">
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.GamesPlayed)
+                @Html.DisplayFor(modelItem => Model.player2Stats.GamesPlayed)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.Min)
+                @Html.DisplayFor(modelItem => Model.player2Stats.Min)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.fgpct1)
+                @Html.DisplayFor(modelItem => Model.fgpct2)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.fg3pct1)
+                @Html.DisplayFor(modelItem => Model.fg3pct2)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.ftpct1)
+                @Html.DisplayFor(modelItem => Model.ftpct2)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.Pts)
+                @Html.DisplayFor(modelItem => Model.player2Stats.Pts)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.Ast)
+                @Html.DisplayFor(modelItem => Model.player2Stats.Ast)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.Reb)
+                @Html.DisplayFor(modelItem => Model.player2Stats.Reb)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.Stl)
+                @Html.DisplayFor(modelItem => Model.player2Stats.Stl)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.Blk)
+                @Html.DisplayFor(modelItem => Model.player2Stats.Blk)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.Turnover)
+                @Html.DisplayFor(modelItem => Model.player2Stats.Turnover)
             </div>
             <div class = "box">
-                @Html.DisplayFor(modelItem => Model.player1Stats.Pf)
+                @Html.DisplayFor(modelItem => Model.player2Stats.Pf)
             </div>
         </div>
     </div>
