@@ -24,20 +24,15 @@ namespace _421final.Views
             List<PlayerRoot> temp = new List<PlayerRoot>();
             List<PlayerRoot> temp2 = new List<PlayerRoot>();
             var dbLebron = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 237);
+       
             temp.Add(dbLebron);
-            var dbKD = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 140);
-            temp.Add(dbKD);
-            var dbHarden = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 192);
-            temp.Add(dbHarden);
+            
             var dbSteph = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 115);
             temp2.Add(dbSteph);
-            var dbJoel = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 145);
-            temp2.Add(dbJoel);
-            var dbBooker = await _context.PlayerRoot.FirstOrDefaultAsync(m => m.Id == 57);
-            temp2.Add(dbBooker);
+            
             vm.playerList1 = temp;
             vm.playerList2 = temp2;
-            vm.playerListHeader = "Suggested players";
+            vm.playerListHeader = "Suggested Players";
 
             return View(vm);
         }

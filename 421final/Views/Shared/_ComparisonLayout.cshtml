@@ -26,6 +26,7 @@
 <link href="/assets/css/color.css" rel="stylesheet">
 <link href="/assets/css/style.css" rel="stylesheet">
 <link href="/assets/css/responsive.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
 <!-- jequery plugins -->
 <script src="/assets/js/jquery.js"></script>
 <script src="/assets/js/popper.min.js"></script>
@@ -139,7 +140,8 @@
                                         <li><a asp-area="" asp-controller="Home" asp-action="Index" style="color: red;">Home</a></li>
                                         <li><a asp-area="" asp-controller="PlayerRoots" asp-action="Index">Players</a></li> 
                                         <li><a asp-area="" asp-controller="TeamRoots" asp-action="Index">Teams</a></li>
-                                        <li><a asp-area="" asp-controller="ComparisonPage" asp-action="Index">Stat Comparisons</a></li> 
+                                        <li><a asp-area="" asp-controller="ComparisonPage" asp-action="Index">Stat Comparisons</a></li>
+                                        <li><a asp-area="" asp-controller="ReportsPage" asp-action="Index">Reports</a></li>
                                         @if (User.IsInRole(SD.Admin))
                                         {
                                             <li><a asp-area="" asp-controller="UserRoles" asp-action="Index">Manage Users</a></li> 

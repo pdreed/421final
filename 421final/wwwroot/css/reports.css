@@ -1,0 +1,100 @@
+﻿.fixed-container {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+    padding: 0px 75px 0px 250px;
+}
+
+#one {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+    padding: 0px 75px 0px 250px;
+}
+
+
+.results-section {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 26px;
+}
+
+#header {
+    font-weight: bold;
+    padding: 0px 250px 0px 0px;
+    color: black;
+}
+
+.team-table-container {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+    padding: 0px 120px 0px 0px;
+}
+
+
+.team-table-box {
+    width: 280px;
+    border: .5px inset black;
+    background-color: #252638;
+    color: whitesmoke;
+}
+
+.stats-table {
+    display: flex;
+    flex-direction: row;
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+    text-align: center;
+    padding: 0px 60px 0px 100px;
+    color: black;
+}
+
+
+.table-container {
+    font-family: 'DejaVu Sans Mono', monospace;
+    justify-content: center;
+    padding: 0px 254px 0px 0px;
+}
+
+.tblrow {
+    width: 280px;
+    min-width: 280px;
+    border: .5px inset black;
+    color: black;
+    justify-content: center;
+    text-align: center;
+}
+
+
+#button-format {
+    width: 125px;
+   
+    background-color: #252638;
+    color: whitesmoke;
+}
+
+#header1 {
+    font-weight: bold;
+    padding: 0px 250px 0px 0px;
+    color: black;
+}
+
+.word-block {
+   width:475px;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 15px;
+    text-align:left;
+    color: black;
+    padding: 0px 0px 0px 0px;
+}
+
+.empty-space {
+    height: 10px;
+}
+
+#top-block{
+    padding: 0px 100px 0px 0px;
+}
