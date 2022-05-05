@@ -71,7 +71,7 @@
 
 #button-format {
     width: 125px;
-   
+   max-height: 26px;
     background-color: #252638;
     color: whitesmoke;
 }
@@ -83,12 +83,13 @@
 }
 
 .word-block {
-   width:475px;
+   width:500px;
     font-family: 'DejaVu Sans Mono', monospace;
     font-size: 15px;
     text-align:left;
     color: black;
     padding: 0px 0px 0px 0px;
+    
 }
 
 .empty-space {
