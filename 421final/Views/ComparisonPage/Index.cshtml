@@ -62,11 +62,9 @@
                     Position
                 </div>
                 <div class = "bio-header-box">
-                    Height (Feet)
+                    Height
                 </div>
-                <div class = "bio-header-box">
-                    Height (Inches)
-                </div>
+            
                 <div class = "bio-header-box">
                     Weight (Lbs)
                 </div>
@@ -97,18 +95,24 @@
                         @Html.DisplayFor(modelItem => item.Position)
                     }
                 </div>
-                <div class = "bio-header-box" id="content">
-                    @foreach (var item in Model.playerList1)
-                    {
-                        @Html.DisplayFor(modelItem => item.HeightFeet)
-                    }
-                </div>
-                <div class = "bio-header-box" id="content">
-                    @foreach (var item in Model.playerList1)
-                    {
-                        @Html.DisplayFor(modelItem => item.HeightInches)
-                    }
-                </div>
+                @if (Model.playerList1[0].HeightFeet != null)
+                {
+                    <div class = "bio-header-box" id="content">
+                        @foreach (var item in Model.playerList1)
+                        {
+                            @Html.DisplayFor(modelItem => item.HeightFeet)
+                        }'@foreach (var item in Model.playerList1)
+                        {
+                            @Html.DisplayFor(modelItem => item.HeightInches)
+                        }"
+                
+                    </div>
+                }
+                else
+                {
+                     <div class = "bio-header-box" id="content">
+                    </div>
+                }
                 <div class = "bio-header-box" id="content">
                     @foreach (var item in Model.playerList1)
                     {
@@ -133,11 +137,9 @@
                     Position
                 </div>
                 <div class = "bio-header-box">
-                    Height (Feet)
+                    Height
                 </div>
-                <div class = "bio-header-box">
-                    Height (Inches)
-                </div>
+               
                 <div class = "bio-header-box">
                     Weight (Lbs)
                 </div>
@@ -168,18 +170,24 @@
                         @Html.DisplayFor(modelItem => item.Position)
                     }
                 </div>
-                <div class = "bio-header-box" id="content">
-                    @foreach (var item in Model.playerList2)
-                    {
-                        @Html.DisplayFor(modelItem => item.HeightFeet)
-                    }
-                </div>
-                <div class = "bio-header-box" id="content">
-                    @foreach (var item in Model.playerList2)
-                    {
-                        @Html.DisplayFor(modelItem => item.HeightInches)
-                    }
-                </div>
+               @if (Model.playerList2[0].HeightFeet != null)
+                {
+                    <div class = "bio-header-box" id="content">
+                        @foreach (var item in Model.playerList2)
+                        {
+                            @Html.DisplayFor(modelItem => item.HeightFeet)
+                        }'@foreach (var item in Model.playerList2)
+                        {
+                            @Html.DisplayFor(modelItem => item.HeightInches)
+                        }"
+                
+                    </div>
+                }
+                else
+                {
+                     <div class = "bio-header-box" id="content">
+                    </div>
+                }
                 <div class = "bio-header-box" id="content">
                     @foreach (var item in Model.playerList2)
                     {
