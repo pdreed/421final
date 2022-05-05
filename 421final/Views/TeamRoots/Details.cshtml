@@ -1,4 +1,5 @@
-﻿@model _421final.Models.TeamRoot
+﻿@using _421final.Data
+@model _421final.Models.TeamRoot
 
 @{
     Layout = "_TeamRootLayout";
@@ -48,7 +49,9 @@
     </dl>
 </div>
 
-<div>
+@if (User.IsInRole(SD.Admin))
+{
+    <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" style="background-color: black;border: none;color: white; border-radius: 5px;
       padding: 16px 32px;
       text-decoration: none;
@@ -59,4 +62,15 @@
       text-decoration: none;
       margin: 4px 2px;
       cursor: pointer;">Back to List</a>
-</div>
+    </div>
+}
+else
+{
+    <div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" style="background-color: black;border: none;color: white; border-radius: 5px;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;">Edit</a>
+    </div>
+}
